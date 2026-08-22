@@ -436,6 +436,153 @@ footer{border-top:1px solid var(--line);padding:45px 0;color:var(--muted)}
   .links a{flex:1 1 auto}
 }
 
+
+/* ===== ZENO VAULT PLAY STORE PRODUCT CARD ===== */
+.vault-product{
+  position:relative;
+  overflow:hidden;
+}
+.vault-product:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.08) 48%,transparent 70%);
+  transform:translateX(-120%);
+  transition:.85s;
+}
+.vault-product:hover:after{transform:translateX(120%)}
+.vault-product-copy{position:relative;z-index:2}
+.vault-product .tag{
+  display:inline-flex;
+  padding:6px 10px;
+  border:1px solid rgba(72,255,145,.18);
+  border-radius:999px;
+  background:rgba(72,255,145,.06);
+  color:var(--mint);
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1.2px;
+}
+.vault-product h3{
+  background:linear-gradient(90deg,#fff,var(--mint),var(--cyan));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.vault-features{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:15px 0;
+}
+.vault-features span{
+  padding:7px 9px;
+  border-radius:10px;
+  border:1px solid rgba(116,255,178,.12);
+  background:rgba(255,255,255,.04);
+  color:#cfe5d9;
+  font-size:10px;
+  font-weight:700;
+}
+.play-store-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  min-width:175px;
+  padding:9px 13px;
+  border-radius:14px;
+  text-decoration:none;
+  color:#fff;
+  background:linear-gradient(145deg,#151b18,#29342e);
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow:0 12px 28px rgba(0,0,0,.25);
+  transition:.3s cubic-bezier(.2,.8,.2,1);
+}
+.play-store-btn:hover{
+  transform:translateY(-4px) scale(1.02);
+  border-color:rgba(72,255,145,.45);
+  box-shadow:0 18px 35px rgba(0,0,0,.35),0 0 25px rgba(72,255,145,.10);
+}
+.play-store-btn small{
+  display:block;
+  color:#aebdb5;
+  font-size:8px;
+  line-height:1;
+  letter-spacing:1px;
+}
+.play-store-btn b{
+  margin-left:auto;
+  color:var(--green);
+  font-size:18px;
+}
+.play-icon{
+  width:30px;height:30px;
+  display:grid;place-items:center;
+  border-radius:9px;
+  color:#04100a;
+  background:linear-gradient(135deg,var(--green),var(--cyan));
+  font-size:12px;
+  box-shadow:0 5px 16px rgba(72,255,145,.25);
+}
+/* Premium Zeno Vault icon */
+.app-visual.vault{
+  position:relative;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 30% 20%,rgba(72,255,145,.22),transparent 30%),
+    linear-gradient(145deg,#123425,#06120c 55%,#0a2035);
+  border:1px solid rgba(166,255,208,.25);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    inset 0 -18px 30px rgba(0,0,0,.28),
+    0 18px 40px rgba(0,0,0,.35),
+    0 0 28px rgba(72,255,145,.08);
+  transform:perspective(700px) rotateX(7deg) rotateY(-7deg);
+}
+.app-visual.vault:before{
+  content:"";
+  position:absolute;
+  inset:10px;
+  border-radius:22px;
+  border:1px solid rgba(72,255,145,.20);
+}
+.vault-orbit{
+  position:absolute;
+  width:66px;height:66px;
+  border:4px solid rgba(166,255,208,.68);
+  border-radius:50%;
+  box-shadow:0 0 18px rgba(72,255,145,.25),inset 0 0 12px rgba(72,255,145,.12);
+}
+.vault-z{
+  position:relative;
+  z-index:2;
+  font-family:"Space Grotesk";
+  font-size:36px;
+  font-weight:800;
+  color:#effff6;
+  text-shadow:0 3px 0 #0a3a23,0 6px 16px rgba(0,0,0,.55);
+}
+.vault-key{
+  position:absolute;
+  right:15px;
+  bottom:14px;
+  width:25px;height:25px;
+  display:grid;place-items:center;
+  border-radius:8px;
+  background:linear-gradient(135deg,var(--green),var(--mint));
+  color:#06140d;
+  font-weight:900;
+  box-shadow:0 5px 14px rgba(72,255,145,.3);
+}
+@media(max-width:700px){
+  .vault-product{text-align:center}
+  .vault-product-copy{display:flex;flex-direction:column;align-items:center}
+  .vault-features{justify-content:center}
+}
+
 </style>
 </head>
 <body>
@@ -494,7 +641,24 @@ footer{border-top:1px solid var(--line);padding:45px 0;color:var(--muted)}
 <div class="section-head reveal"><span class="eyebrow">02 / ZENO APPS</span><h2>Real products under ZENO.</h2><p>Professional product cards make the website feel like a real technology ecosystem rather than a simple token page.</p></div>
 <div class="glass-grid">
 <div class="glass app-card reveal"><div class="app-visual">ZNO</div><h3>Zeno Network</h3><p>Community, tasks, rewards and ZNO ecosystem utilities.</p><span class="tag">ACTIVE PRODUCT</span></div>
-<div class="glass app-card reveal"><div class="app-visual vault">⌁</div><h3>Zeno Vault</h3><p>Securely organize passwords, cards, Wi-Fi, crypto accounts, documents and other private information.</p><span class="tag">SECURITY APP</span></div>
+<div class="glass app-card reveal vault-product">
+  <div class="app-visual vault">
+    <span class="vault-orbit"></span>
+    <span class="vault-z">Z</span>
+    <span class="vault-key">⌁</span>
+  </div>
+  <div class="vault-product-copy">
+    <div class="tag">SECURITY APP • ACTIVE</div>
+    <h3>Zeno Vault</h3>
+    <p>Securely organize passwords, cards, Wi-Fi, crypto accounts, documents and other private information.</p>
+    <div class="vault-features"><span>🔐 Secure Vault</span><span>💳 Cards</span><span>₿ Crypto</span><span>🗂 Private Data</span></div>
+    <a class="play-store-btn" href="https://play.google.com/store/apps/details?id=com.zenonetwork.zenonotes" target="_blank" rel="noopener noreferrer">
+      <span class="play-icon">▶</span>
+      <span><small>GET IT ON</small>Google Play</span>
+      <b>↗</b>
+    </a>
+  </div>
+</div>
 <div class="glass app-card reveal"><div class="app-visual future">+</div><h3>Future Zeno Apps</h3><p>New applications can be added here as the ecosystem expands.</p><span class="tag">COMING SOON</span></div>
 </div>
 </div></section>
