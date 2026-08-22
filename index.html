@@ -93,6 +93,51 @@ a{color:inherit}
 }
 .coin:before{content:"";position:absolute;inset:17px;border-radius:50%;border:2px dashed rgba(219,255,229,.32)}
 .coin-z{font-family:"Space Grotesk";font-size:150px;font-weight:700;color:#06140d;text-shadow:3px 5px 0 rgba(166,255,208,.25);transform:translateY(-5px)}
+
+.coin-logo-3d{
+  width:190px;height:190px;display:grid;place-items:center;position:relative;
+  transform:translateY(-8px) perspective(700px) rotateX(8deg) rotateY(-7deg);
+  animation:logoFloat 4.8s ease-in-out infinite;
+  filter:
+    drop-shadow(0 4px 0 #07170e)
+    drop-shadow(0 8px 0 #06120b)
+    drop-shadow(0 12px 0 rgba(0,0,0,.75))
+    drop-shadow(0 0 22px rgba(72,255,145,.55));
+}
+.coin-logo-3d:before{
+  content:"";position:absolute;inset:8px;border-radius:42px;
+  background:linear-gradient(145deg,rgba(255,255,255,.30),rgba(72,255,145,.08) 45%,rgba(0,0,0,.18));
+  border:1px solid rgba(224,255,238,.26);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.18),0 0 35px rgba(72,255,145,.18);
+  transform:translateZ(-10px) rotate(-3deg);
+  pointer-events:none;
+}
+.coin-logo-3d img{
+  width:150px;height:150px;object-fit:contain;position:relative;z-index:2;
+  transform:translateZ(20px);
+  filter:
+    brightness(1.12) contrast(1.08)
+    drop-shadow(3px 4px 0 #0b3a23)
+    drop-shadow(6px 8px 0 #062013)
+    drop-shadow(0 0 18px rgba(166,255,208,.58));
+}
+.coin-logo-3d:after{
+  content:"";position:absolute;width:105px;height:24px;left:43px;top:25px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.46),transparent);
+  transform:rotate(-25deg);filter:blur(5px);opacity:.55;z-index:3;
+  animation:shine 3.2s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes logoFloat{
+  0%,100%{transform:translateY(-8px) perspective(700px) rotateX(8deg) rotateY(-7deg)}
+  50%{transform:translateY(-20px) perspective(700px) rotateX(11deg) rotateY(5deg)}
+}
+@keyframes shine{
+  0%,35%{transform:translateX(-45px) rotate(-25deg);opacity:0}
+  50%{opacity:.55}
+  75%,100%{transform:translateX(75px) rotate(-25deg);opacity:0}
+}
+
 .coin-label{position:absolute;bottom:45px;font-size:12px;letter-spacing:4px;font-weight:900;color:#d9ffe9}
 .float-card{position:absolute;padding:15px 17px;border:1px solid var(--line);background:rgba(5,18,12,.68);backdrop-filter:blur(16px);border-radius:18px;box-shadow:var(--shadow);font-size:12px}
 .float-card strong{display:block;color:var(--green);font-size:18px;margin-bottom:4px}
@@ -100,29 +145,94 @@ a{color:inherit}
 
 .stats{margin-top:-58px;position:relative;z-index:5}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.stat{padding:23px;border:1px solid var(--line);border-radius:20px;background:rgba(8,25,17,.72);backdrop-filter:blur(18px);box-shadow:var(--shadow)}
+.stat{padding:23px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(16,42,28,.76),rgba(4,14,10,.82));backdrop-filter:blur(18px);box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.06);transition:.35s ease}.stat:hover{transform:translateY(-7px);border-color:rgba(72,255,145,.42);box-shadow:0 25px 60px rgba(0,0,0,.38),0 0 28px rgba(72,255,145,.06)}
 .stat b{display:block;font-family:"Space Grotesk";font-size:26px;color:var(--mint)}.stat span{font-size:12px;color:var(--muted)}
 
-section{padding:105px 0}
-.section-head{max-width:760px;margin-bottom:42px}
-.eyebrow{font-size:11px;font-weight:900;letter-spacing:2.4px;color:var(--green)}
-.section-head h2{font-family:"Space Grotesk";font-size:clamp(38px,5vw,60px);line-height:1;margin:12px 0 15px;letter-spacing:-2px}
-.section-head p{color:var(--muted);line-height:1.8;font-size:16px}
-.glass-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.glass{
- padding:28px;border:1px solid var(--line);border-radius:24px;
- background:linear-gradient(145deg,rgba(18,42,29,.68),rgba(5,16,11,.7));
- backdrop-filter:blur(18px);box-shadow:0 18px 55px rgba(0,0,0,.22);
- transition:.35s;position:relative;overflow:hidden;
+section{padding:115px 0}
+.section-head{max-width:900px;margin-bottom:48px;position:relative}
+.eyebrow{
+ display:inline-flex;align-items:center;gap:10px;
+ font-size:18px;font-weight:900;letter-spacing:4px;color:var(--green);
+ text-transform:uppercase;
+ padding:10px 16px;border-radius:999px;
+ border:1px solid rgba(72,255,145,.24);
+ background:linear-gradient(135deg,rgba(72,255,145,.10),rgba(70,231,255,.045));
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 28px rgba(0,0,0,.16);
+ backdrop-filter:blur(14px);
 }
-.glass:before{content:"";position:absolute;width:150px;height:150px;right:-80px;top:-80px;background:rgba(72,255,145,.08);border-radius:50%;filter:blur(2px)}
-.glass:hover{transform:translateY(-8px);border-color:rgba(72,255,145,.42);box-shadow:0 25px 70px rgba(0,0,0,.35)}
+.eyebrow:before{
+ content:"";width:7px;height:7px;border-radius:50%;
+ background:var(--green);box-shadow:0 0 16px var(--green);
+ animation:blink 1.8s infinite;
+}
+.section-head h2{
+ font-family:"Space Grotesk";
+ font-size:clamp(58px,7vw,88px);
+ line-height:.98;margin:18px 0 18px;letter-spacing:-3px;
+ font-weight:700;
+ color:#f2fff8;
+ text-shadow:0 10px 35px rgba(0,0,0,.28);
+}
+.section-head h2::after{
+ content:"";display:block;width:88px;height:3px;margin-top:22px;border-radius:99px;
+ background:linear-gradient(90deg,var(--green),var(--cyan),transparent);
+ box-shadow:0 0 18px rgba(72,255,145,.28);
+}
+.connect-title{font-size:clamp(48px,6vw,78px)!important;line-height:.98;letter-spacing:-3px;color:#f2fff8}
+.section-head p{color:#a9c1b4;line-height:1.85;font-size:17px;max-width:760px}
+.glass-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.glass{
+ padding:31px;border:1px solid rgba(116,255,178,.17);border-radius:26px;
+ background:
+   linear-gradient(145deg,rgba(20,48,33,.70),rgba(5,16,11,.76)),
+   radial-gradient(circle at 0% 0%,rgba(72,255,145,.08),transparent 42%);
+ backdrop-filter:blur(22px) saturate(145%);
+ box-shadow:
+   0 20px 55px rgba(0,0,0,.25),
+   inset 0 1px 0 rgba(255,255,255,.055);
+ transition:
+   transform .42s cubic-bezier(.2,.8,.2,1),
+   border-color .35s ease,
+   box-shadow .42s ease,
+   background .42s ease;
+ position:relative;overflow:hidden;
+ isolation:isolate;
+}
+.glass:before{
+ content:"";position:absolute;width:190px;height:190px;right:-95px;top:-95px;
+ background:radial-gradient(circle,rgba(72,255,145,.18),rgba(70,231,255,.05) 42%,transparent 70%);
+ border-radius:50%;filter:blur(4px);transition:.5s;z-index:-1;
+}
+.glass:after{
+ content:"";position:absolute;left:-120%;top:0;width:65%;height:100%;
+ background:linear-gradient(105deg,transparent,rgba(255,255,255,.075),transparent);
+ transform:skewX(-18deg);transition:.65s;pointer-events:none;
+}
+.glass:hover{
+ transform:perspective(900px) translateY(-14px) rotateX(2deg) scale(1.014);
+ border-color:rgba(72,255,145,.52);
+ background:
+   linear-gradient(145deg,rgba(23,61,40,.80),rgba(5,18,13,.84)),
+   radial-gradient(circle at 0% 0%,rgba(72,255,145,.13),transparent 45%);
+ box-shadow:
+   0 34px 95px rgba(0,0,0,.48),
+   0 0 0 1px rgba(72,255,145,.07),
+   0 0 45px rgba(72,255,145,.075),
+   inset 0 1px 0 rgba(255,255,255,.10);
+}
+.glass:hover:before{transform:scale(1.45);opacity:1}
+.glass:hover:after{left:135%}
+.glass h3{
+ font-family:"Space Grotesk";font-size:28px;letter-spacing:-.5px;
+ margin:18px 0 10px;color:#effff7;
+}
+.glass p{color:#a9bfb3;line-height:1.78;margin:0}
 .icon{
  width:52px;height:52px;display:grid;place-items:center;border-radius:16px;
  background:linear-gradient(135deg,rgba(72,255,145,.15),rgba(70,231,255,.08));
  border:1px solid rgba(72,255,145,.2);font-size:23px
 }
-.glass h3{font-family:"Space Grotesk";font-size:23px;margin:18px 0 9px}
+.glass h3{font-family:"Space Grotesk";font-size:28px;margin:18px 0 9px}
 .glass p{color:var(--muted);line-height:1.75;margin:0}
 .tag{display:inline-block;margin-top:20px;padding:7px 10px;border-radius:999px;border:1px solid var(--line);color:var(--mint);font-size:10px;font-weight:900;letter-spacing:1px}
 
@@ -167,7 +277,7 @@ footer{border-top:1px solid var(--line);padding:45px 0;color:var(--muted)}
 @keyframes pulse{0%,100%{transform:scale(.94);opacity:.7}50%{transform:scale(1.08);opacity:1}}
 @keyframes spin{to{transform:rotate(360deg)}}@keyframes blink{50%{opacity:.35}}
 @media(max-width:1000px){.links{display:none}.menu{display:block}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:430px}.glass-grid,.service-grid{grid-template-columns:repeat(2,1fr)}.roadmap{grid-template-columns:repeat(2,1fr)}.token-box,.zenvy-inner{grid-template-columns:1fr}}
-@media(max-width:650px){.hero{min-height:850px}.hero h1{letter-spacing:-3px}.hero-copy{font-size:16px}.hero-art{min-height:350px}.coin{width:220px;height:220px}.coin-z{font-size:110px}.orbit{width:330px;height:330px}.float-card{display:none}.stats-grid,.glass-grid,.service-grid,.roadmap{grid-template-columns:1fr}.stats{margin-top:-25px}section{padding:75px 0}.zenvy-inner{padding:25px}.update{grid-template-columns:1fr;gap:7px}}
+@media(max-width:650px){.hero{min-height:850px}.hero h1{letter-spacing:-3px}.hero-copy{font-size:16px}.hero-art{min-height:350px}.coin{width:220px;height:220px}.coin-logo-3d{width:150px;height:150px}.coin-logo-3d img{width:118px;height:118px}.orbit{width:330px;height:330px}.float-card{display:none}.stats-grid,.glass-grid,.service-grid,.roadmap{grid-template-columns:1fr}.stats{margin-top:-25px}section{padding:75px 0}.zenvy-inner{padding:25px}.update{grid-template-columns:1fr;gap:7px}}
 </style>
 </head>
 <body>
@@ -198,7 +308,7 @@ footer{border-top:1px solid var(--line);padding:45px 0;color:var(--muted)}
 
 <div class="hero-art">
 <div class="glow"></div><div class="orbit"></div>
-<div class="coin"><div class="coin-z">Z</div><div class="coin-label">ZNO • ZENO NETWORK</div></div>
+<div class="coin"><div class="coin-logo-3d"><img src="zno.svg" alt="ZNO Network 3D logo"></div><div class="coin-label">ZNO • ZENO NETWORK</div></div>
 <div class="float-card fc1"><strong>10B</strong>Fixed ZNO Supply</div>
 <div class="float-card fc2"><strong>VAULT</strong>Secure Digital Storage</div>
 <div class="float-card fc3"><strong>BNB</strong>Smart Chain</div>
@@ -292,7 +402,7 @@ footer{border-top:1px solid var(--line);padding:45px 0;color:var(--muted)}
 </div></section>
 
 <section id="contact"><div class="wrap"><div class="cta reveal">
-<span class="eyebrow">09 / CONNECT</span><h2 style="font-family:'Space Grotesk';font-size:42px;margin:12px 0">Follow the official Zeno Network.</h2>
+<span class="eyebrow">09 / CONNECT</span><h2 class="connect-title" style="font-family:'Space Grotesk';margin:12px 0">Follow the official Zeno Network.</h2>
 <p style="color:var(--muted);line-height:1.8">Official announcements, product updates, partnerships and community information.</p>
 <div class="hero-buttons"><a class="btn primary" href="https://t.me/znonetwork" target="_blank">Telegram</a><a class="btn" href="https://x.com/ZenoNetworkZNO" target="_blank">X / Twitter</a><a class="btn" href="whitepaper.pdf" target="_blank">Whitepaper</a></div>
 </div></div></section>
