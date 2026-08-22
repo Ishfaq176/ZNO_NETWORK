@@ -583,6 +583,117 @@ footer{border-top:1px solid var(--line);padding:45px 0;color:var(--muted)}
   .vault-features{justify-content:center}
 }
 
+
+/* ===== ZENO PRODUCTS V5 ===== */
+.zeno-products{
+  align-items:stretch;
+  overflow:visible;
+}
+.zeno-product-card,
+.vault-product{
+  position:relative;
+  overflow:visible !important;
+  margin-top:38px;
+  transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease, border-color .45s ease;
+}
+.zeno-product-card:hover,
+.vault-product:hover{
+  transform:translateY(-10px);
+}
+.product-icon-float{
+  position:absolute;
+  z-index:8;
+  top:-46px;
+  left:50%;
+  transform:translateX(-50%);
+  width:92px;
+  height:92px;
+  border-radius:25px;
+  padding:7px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(145deg,rgba(255,255,255,.30),rgba(255,255,255,.06));
+  border:1px solid rgba(255,255,255,.28);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.40),
+    0 0 35px rgba(72,255,145,.13),
+    inset 0 1px 0 rgba(255,255,255,.35);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease;
+}
+.product-icon-float img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:contain;
+  border-radius:19px;
+  filter:drop-shadow(0 7px 12px rgba(0,0,0,.35));
+}
+.zeno-product-card:hover .product-icon-float,
+.vault-product:hover .product-icon-float{
+  transform:translateX(-50%) translateY(-7px) rotate(-2deg) scale(1.05);
+  box-shadow:
+    0 28px 48px rgba(0,0,0,.48),
+    0 0 45px rgba(72,255,145,.22),
+    inset 0 1px 0 rgba(255,255,255,.45);
+}
+.zeno-network-icon{
+  background:linear-gradient(145deg,rgba(36,255,153,.28),rgba(30,89,255,.15));
+}
+.zeno-network-icon img{
+  padding:5px;
+  border-radius:19px;
+  background:rgba(4,14,10,.65);
+}
+.vault-product-icon{
+  background:linear-gradient(145deg,rgba(255,255,255,.38),rgba(50,120,255,.10));
+}
+.future-product-icon{
+  color:#dffff0;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:44px;
+  font-weight:300;
+  background:linear-gradient(145deg,rgba(72,255,145,.18),rgba(91,124,255,.12));
+}
+.product-card-copy{
+  position:relative;
+  z-index:3;
+}
+.network-visual{
+  position:relative;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 40%,rgba(72,255,145,.20),transparent 34%),
+    linear-gradient(145deg,#071a12,#081425 60%,#0d2434);
+  border:1px solid rgba(72,255,145,.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10), inset 0 -20px 35px rgba(0,0,0,.30);
+}
+.network-visual strong{
+  position:relative;
+  z-index:2;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:38px;
+  letter-spacing:2px;
+  color:#effff6;
+  text-shadow:0 3px 0 #0b3c27,0 8px 25px rgba(0,0,0,.55);
+}
+.network-ring{
+  position:absolute;
+  width:92px;
+  height:92px;
+  border-radius:50%;
+  border:2px solid rgba(72,255,145,.40);
+  box-shadow:0 0 25px rgba(72,255,145,.13), inset 0 0 20px rgba(72,255,145,.08);
+  animation:networkPulse 3.2s ease-in-out infinite;
+}
+@keyframes networkPulse{
+  0%,100%{transform:scale(.94);opacity:.65}
+  50%{transform:scale(1.08);opacity:1}
+}
+
 </style>
 </head>
 <body>
@@ -638,10 +749,39 @@ footer{border-top:1px solid var(--line);padding:45px 0;color:var(--muted)}
 </div></section>
 
 <section id="apps"><div class="wrap">
-<div class="section-head reveal"><span class="eyebrow">02 / ZENO APPS</span><h2>Real products under ZENO.</h2><p>Professional product cards make the website feel like a real technology ecosystem rather than a simple token page.</p></div>
-<div class="glass-grid">
-<div class="glass app-card reveal"><div class="app-visual">ZNO</div><h3>Zeno Network</h3><p>Community, tasks, rewards and ZNO ecosystem utilities.</p><span class="tag">ACTIVE PRODUCT</span></div>
+<div class="section-head reveal"><span class="eyebrow">02 / ZENO APPS</span><h2>Real products under ZENO.</h2><p>Professional products, mobile apps and digital services built under the Zeno ecosystem.</p></div>
+
+<div class="glass-grid zeno-products">
+
+<!-- ZENO NETWORK APP -->
+<div class="glass app-card reveal zeno-product-card">
+  <div class="product-icon-float zeno-network-icon">
+    <img src="zno.svg" alt="Zeno Network app icon">
+  </div>
+  <div class="app-visual network-visual">
+    <span class="network-ring"></span>
+    <strong>ZNO</strong>
+  </div>
+  <div class="product-card-copy">
+    <div class="tag">ZENO NETWORK • ACTIVE</div>
+    <h3>Zeno Network</h3>
+    <p>Official Zeno ecosystem app for community, tasks, rewards, ZNO utilities and future ecosystem services.</p>
+    <div class="vault-features">
+      <span>⚡ Rewards</span><span>🪙 ZNO</span><span>👥 Community</span><span>📱 Android</span>
+    </div>
+    <a class="play-store-btn" href="https://play.google.com/store/apps/details?id=com.zenonetwork.zenoapp" target="_blank" rel="noopener noreferrer">
+      <span class="play-icon">▶</span>
+      <span><small>GET IT ON</small>Google Play</span>
+      <b>↗</b>
+    </a>
+  </div>
+</div>
+
+<!-- ZENO VAULT APP -->
 <div class="glass app-card reveal vault-product">
+  <div class="product-icon-float vault-product-icon">
+    <img src="assets/zeno-vault-icon.png" alt="Zeno Vault app icon">
+  </div>
   <div class="app-visual vault">
     <span class="vault-orbit"></span>
     <span class="vault-z">Z</span>
@@ -659,7 +799,18 @@ footer{border-top:1px solid var(--line);padding:45px 0;color:var(--muted)}
     </a>
   </div>
 </div>
-<div class="glass app-card reveal"><div class="app-visual future">+</div><h3>Future Zeno Apps</h3><p>New applications can be added here as the ecosystem expands.</p><span class="tag">COMING SOON</span></div>
+
+<!-- FUTURE PRODUCTS -->
+<div class="glass app-card reveal zeno-product-card">
+  <div class="product-icon-float future-product-icon">+</div>
+  <div class="app-visual future">+</div>
+  <div class="product-card-copy">
+    <div class="tag">COMING SOON</div>
+    <h3>Future Zeno Apps</h3>
+    <p>New applications, games and digital services will be added here as the Zeno ecosystem expands.</p>
+  </div>
+</div>
+
 </div>
 </div></section>
 
