@@ -3,102 +3,315 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ZENO NETWORK | Official</title>
-<meta name="description" content="ZENO NETWORK — apps, games, digital services, ZNO and Zenvy marketplace.">
+<title>ZENO NETWORK | Official Digital Ecosystem</title>
+<meta name="description" content="ZENO NETWORK — apps, games, digital services, ZNO utility and the future Zenvy marketplace.">
 <meta property="og:title" content="ZENO NETWORK | Official">
-<meta property="og:description" content="Apps, games, digital services, ZNO and Zenvy marketplace.">
+<meta property="og:description" content="Apps, games, digital services, ZNO and Zenvy.">
 <meta property="og:image" content="banner.jpeg">
+<meta name="theme-color" content="#06100d">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#050b09;--card:#0d1d17;--line:#1b4b36;--g:#39f58d;--g2:#9affc5;--b:#3b9cff;--w:#effff6;--m:#9bb7a9}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:radial-gradient(circle at 10% 0,#123c27 0,transparent 28%),radial-gradient(circle at 90% 20%,#102b48 0,transparent 25%),var(--bg);color:var(--w)}
-a{color:inherit}.wrap{width:min(1180px,92%);margin:auto}.nav{position:sticky;top:0;z-index:20;background:#050b09e8;backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}.navin{min-height:72px;display:flex;align-items:center;justify-content:space-between}.logo{display:flex;gap:10px;align-items:center;text-decoration:none;font-weight:900;letter-spacing:1px}.logo img{width:44px;height:44px}.links{display:flex;gap:20px}.links a{text-decoration:none;color:#cce6d8;font-size:14px;font-weight:700}.links a:hover{color:var(--g)}.menu{display:none;background:none;color:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 12px;font-size:20px}
-.hero{min-height:650px;display:flex;align-items:center;background:linear-gradient(90deg,#050b09f5 5%,#050b09b8 55%,#050b0940),url("banner.jpeg") center/cover no-repeat}.hero h1{font-size:clamp(48px,8vw,88px);line-height:.94;letter-spacing:-4px;margin:22px 0}.hero h1 span{color:var(--g)}.hero p{max-width:700px;color:#bdd4c7;font-size:20px;line-height:1.75}.badge{display:inline-block;border:1px solid var(--line);background:#143522c9;color:var(--g2);border-radius:999px;padding:9px 14px;font-weight:800;font-size:12px}.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.btn{display:inline-block;text-decoration:none;border:1px solid var(--line);border-radius:13px;padding:13px 21px;font-weight:900}.primary{background:linear-gradient(135deg,var(--g),var(--g2));color:#04130b;border:0}.secondary{background:#ffffff08}
-.stats{margin-top:-45px;position:relative;z-index:2}.statsgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat,.card,.phase{background:linear-gradient(145deg,#10261ddd,#08140fdd);border:1px solid var(--line);border-radius:20px}.stat{padding:23px}.stat b{display:block;font-size:25px;color:var(--g2)}.stat small{color:var(--m)}
-section{padding:90px 0}.head{max-width:750px;margin-bottom:38px}.eyebrow{color:var(--g);font-size:12px;font-weight:900;letter-spacing:2px}.head h2{font-size:clamp(34px,5vw,52px);margin:9px 0}.head p,.card p,.phase p{color:var(--m);line-height:1.75}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{padding:27px}.card:hover{border-color:#39f58d77;transform:translateY(-4px)}.icon{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:#39f58d12;border:1px solid var(--line);font-size:22px}.card h3{margin:17px 0 8px}.app{min-height:245px;display:flex;flex-direction:column}.tag{margin-top:auto;color:var(--g2);font-size:12px;font-weight:900;padding-top:18px}
-.market{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;padding:35px;border-radius:27px;border:1px solid #3b9cff55;background:linear-gradient(135deg,#091923,#0c241b)}.market h3{font-size:35px}.marketvisual{min-height:230px;display:grid;place-items:center;text-align:center;border:1px solid var(--line);border-radius:20px;background:#ffffff05}.marketvisual b{font-size:65px;color:var(--g)}
-.token{display:grid;grid-template-columns:1fr 1fr;gap:18px}.rows{overflow:hidden}.row{display:flex;justify-content:space-between;padding:17px 20px;border-bottom:1px solid var(--line)}.row:last-child{border:0}.row span{color:var(--m)}.contract{background:#06100c;border:1px dashed #39f58d66;color:var(--g2);padding:20px;border-radius:16px;word-break:break-all;font:14px Consolas,monospace}
-.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.phase{padding:23px}.phase small{color:var(--g);font-weight:900}.services{grid-template-columns:repeat(4,1fr)}.service{min-height:210px}.update{display:grid;grid-template-columns:100px 1fr;padding:20px 0;border-bottom:1px solid var(--line)}.update:last-child{border:0}.date{color:var(--g);font-weight:900}.cta{padding:48px;border-radius:26px;border:1px solid var(--line);background:linear-gradient(135deg,#0c2118,#08120f)}footer{border-top:1px solid var(--line);padding:40px 0;color:var(--m)}.foot{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}.flinks{display:flex;gap:18px;flex-wrap:wrap}.flinks a{text-decoration:none}
-@media(max-width:900px){.links{display:none;position:absolute;top:70px;left:4%;right:4%;padding:18px;flex-direction:column;background:#08130f;border:1px solid var(--line);border-radius:15px}.links.open{display:flex}.menu{display:block}.statsgrid,.timeline{grid-template-columns:repeat(2,1fr)}.grid,.services,.token,.market{grid-template-columns:repeat(2,1fr)}.market{grid-template-columns:1fr}}
-@media(max-width:600px){.hero{min-height:600px}.hero h1{letter-spacing:-2px}.statsgrid,.timeline,.grid,.services,.token{grid-template-columns:1fr}section{padding:65px 0}.market,.cta{padding:25px}.update{grid-template-columns:1fr;gap:5px}}
+:root{
+  --bg:#030806; --bg2:#06120d; --panel:rgba(10,28,20,.62);
+  --panel2:rgba(7,19,14,.82); --line:rgba(116,255,178,.18);
+  --green:#48ff91; --mint:#a6ffd0; --cyan:#46e7ff; --blue:#5d8dff;
+  --white:#f3fff8; --muted:#9eb9aa; --gold:#d7ff6a;
+  --shadow:0 25px 90px rgba(0,0,0,.48);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;color:var(--white);background:
+ radial-gradient(circle at 8% 2%,rgba(46,255,139,.14),transparent 25%),
+ radial-gradient(circle at 92% 12%,rgba(63,131,255,.15),transparent 27%),
+ linear-gradient(180deg,#020604,#06110c 45%,#020504);
+ font-family:Inter,Arial,sans-serif;overflow-x:hidden;
+}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.24;
+ background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+ background-size:70px 70px;mask-image:linear-gradient(to bottom,#000,transparent 75%);z-index:-1}
+a{color:inherit}
+.wrap{width:min(1240px,92%);margin:auto}
+.nav{
+ position:fixed;top:0;left:0;right:0;z-index:100;
+ background:rgba(2,8,6,.64);border-bottom:1px solid rgba(130,255,185,.12);
+ backdrop-filter:blur(22px) saturate(150%);
+}
+.navin{height:76px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:"Space Grotesk";font-weight:700;letter-spacing:.8px}
+.logo img{width:44px;height:44px;filter:drop-shadow(0 0 15px rgba(72,255,145,.4))}
+.logo em{font-style:normal;color:var(--green)}
+.links{display:flex;align-items:center;gap:22px}
+.links a{text-decoration:none;color:#c8ddd2;font-size:13px;font-weight:700;transition:.25s}
+.links a:hover{color:var(--green);transform:translateY(-1px)}
+.menu{display:none;background:rgba(255,255,255,.05);color:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 12px;font-size:20px}
+
+.hero{
+ min-height:790px;padding-top:76px;position:relative;display:flex;align-items:center;overflow:hidden;
+ background:
+ linear-gradient(90deg,rgba(2,7,5,.97) 0%,rgba(2,7,5,.82) 43%,rgba(2,7,5,.25) 100%),
+ url("banner.jpeg") center/cover no-repeat;
+}
+.hero:after{
+ content:"";position:absolute;width:650px;height:650px;right:-180px;top:80px;border-radius:50%;
+ background:radial-gradient(circle,rgba(70,255,145,.2),rgba(67,130,255,.08) 42%,transparent 68%);
+ filter:blur(10px);animation:pulse 5s ease-in-out infinite;
+}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:50px;align-items:center;position:relative;z-index:2}
+.kicker{display:inline-flex;align-items:center;gap:9px;padding:9px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(10,35,24,.58);color:var(--mint);font-size:11px;font-weight:800;letter-spacing:1.7px;backdrop-filter:blur(12px)}
+.dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 15px var(--green);animation:blink 1.6s infinite}
+.hero h1{font-family:"Space Grotesk";font-size:clamp(55px,7.8vw,105px);line-height:.88;letter-spacing:-5px;margin:25px 0 24px}
+.hero h1 .green{color:var(--green);text-shadow:0 0 35px rgba(72,255,145,.18)}
+.hero h1 .silver{color:#eaf4ef}
+.hero-copy{max-width:680px;color:#b8cec2;font-size:18px;line-height:1.85}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{
+ display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;
+ padding:14px 20px;border-radius:14px;font-weight:800;font-size:13px;border:1px solid var(--line);
+ transition:.28s;cursor:pointer;background:rgba(255,255,255,.045);color:#effff6;
+}
+.btn:hover{transform:translateY(-4px);box-shadow:0 15px 35px rgba(0,0,0,.28);border-color:rgba(72,255,145,.45)}
+.btn.primary{color:#031109;border:0;background:linear-gradient(135deg,var(--green),var(--mint));box-shadow:0 12px 35px rgba(72,255,145,.2)}
+.btn.blue{background:linear-gradient(135deg,#46e7ff,#648aff);color:#041019;border:0}
+.contract-mini{margin-top:20px;color:#9eb9aa;font-size:12px;word-break:break-all}
+.contract-mini b{color:#d7ffea}
+
+.hero-art{min-height:500px;position:relative;display:grid;place-items:center}
+.glow{position:absolute;width:430px;height:430px;border-radius:50%;background:radial-gradient(circle,rgba(72,255,145,.2),transparent 65%);filter:blur(5px);animation:pulse 5s infinite}
+.orbit{position:absolute;width:440px;height:440px;border:1px solid rgba(72,255,145,.18);border-radius:50%;animation:spin 22s linear infinite}
+.orbit:before,.orbit:after{content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:var(--green);box-shadow:0 0 25px var(--green)}
+.orbit:before{top:35px;left:60px}.orbit:after{bottom:65px;right:25px;background:var(--cyan);box-shadow:0 0 25px var(--cyan)}
+.coin{
+ width:285px;height:285px;border-radius:50%;position:relative;display:grid;place-items:center;
+ background:radial-gradient(circle at 35% 25%,#d8ff9d 0,#42e777 16%,#0b7e45 45%,#031b11 72%);
+ border:7px solid #142f22;box-shadow:inset 0 0 0 3px rgba(166,255,208,.35),inset 0 -25px 45px rgba(0,0,0,.5),0 0 75px rgba(72,255,145,.3),0 35px 90px rgba(0,0,0,.55);
+ transform:perspective(700px) rotateX(7deg);animation:float 4.8s ease-in-out infinite;
+}
+.coin:before{content:"";position:absolute;inset:17px;border-radius:50%;border:2px dashed rgba(219,255,229,.32)}
+.coin-z{font-family:"Space Grotesk";font-size:150px;font-weight:700;color:#06140d;text-shadow:3px 5px 0 rgba(166,255,208,.25);transform:translateY(-5px)}
+.coin-label{position:absolute;bottom:45px;font-size:12px;letter-spacing:4px;font-weight:900;color:#d9ffe9}
+.float-card{position:absolute;padding:15px 17px;border:1px solid var(--line);background:rgba(5,18,12,.68);backdrop-filter:blur(16px);border-radius:18px;box-shadow:var(--shadow);font-size:12px}
+.float-card strong{display:block;color:var(--green);font-size:18px;margin-bottom:4px}
+.fc1{top:55px;right:5px}.fc2{bottom:65px;left:0}.fc3{top:155px;left:-20px}
+
+.stats{margin-top:-58px;position:relative;z-index:5}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{padding:23px;border:1px solid var(--line);border-radius:20px;background:rgba(8,25,17,.72);backdrop-filter:blur(18px);box-shadow:var(--shadow)}
+.stat b{display:block;font-family:"Space Grotesk";font-size:26px;color:var(--mint)}.stat span{font-size:12px;color:var(--muted)}
+
+section{padding:105px 0}
+.section-head{max-width:760px;margin-bottom:42px}
+.eyebrow{font-size:11px;font-weight:900;letter-spacing:2.4px;color:var(--green)}
+.section-head h2{font-family:"Space Grotesk";font-size:clamp(38px,5vw,60px);line-height:1;margin:12px 0 15px;letter-spacing:-2px}
+.section-head p{color:var(--muted);line-height:1.8;font-size:16px}
+.glass-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.glass{
+ padding:28px;border:1px solid var(--line);border-radius:24px;
+ background:linear-gradient(145deg,rgba(18,42,29,.68),rgba(5,16,11,.7));
+ backdrop-filter:blur(18px);box-shadow:0 18px 55px rgba(0,0,0,.22);
+ transition:.35s;position:relative;overflow:hidden;
+}
+.glass:before{content:"";position:absolute;width:150px;height:150px;right:-80px;top:-80px;background:rgba(72,255,145,.08);border-radius:50%;filter:blur(2px)}
+.glass:hover{transform:translateY(-8px);border-color:rgba(72,255,145,.42);box-shadow:0 25px 70px rgba(0,0,0,.35)}
+.icon{
+ width:52px;height:52px;display:grid;place-items:center;border-radius:16px;
+ background:linear-gradient(135deg,rgba(72,255,145,.15),rgba(70,231,255,.08));
+ border:1px solid rgba(72,255,145,.2);font-size:23px
+}
+.glass h3{font-family:"Space Grotesk";font-size:23px;margin:18px 0 9px}
+.glass p{color:var(--muted);line-height:1.75;margin:0}
+.tag{display:inline-block;margin-top:20px;padding:7px 10px;border-radius:999px;border:1px solid var(--line);color:var(--mint);font-size:10px;font-weight:900;letter-spacing:1px}
+
+.app-card{min-height:290px;display:flex;flex-direction:column}
+.app-card .tag{margin-top:auto}
+.app-visual{height:115px;border-radius:18px;margin:-3px -3px 0;display:grid;place-items:center;font-family:"Space Grotesk";font-size:45px;font-weight:700;color:#06140d;background:radial-gradient(circle at 40% 35%,#b4ff7b,#2fe87f 25%,#087442 70%);box-shadow:inset 0 0 40px rgba(255,255,255,.12)}
+.app-visual.vault{color:#eafff4;background:radial-gradient(circle at 50% 35%,#6dfff3,#176c72 35%,#061d2a 78%)}
+.app-visual.future{color:#dce7ff;background:radial-gradient(circle at 50% 35%,#9f9bff,#4d46a5 35%,#111433 78%)}
+
+.zenvy{
+ border:1px solid rgba(93,141,255,.3);border-radius:32px;overflow:hidden;
+ background:radial-gradient(circle at 75% 35%,rgba(93,141,255,.18),transparent 28%),linear-gradient(135deg,#081521,#071b12);
+ box-shadow:var(--shadow)
+}
+.zenvy-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:25px;padding:45px}
+.market-orb{min-height:300px;display:grid;place-items:center;position:relative}
+.market-orb:before{content:"";width:245px;height:245px;border-radius:50%;background:conic-gradient(from 0deg,#46e7ff,#8a75ff,#48ff91,#46e7ff);filter:blur(1px);animation:spin 8s linear infinite;box-shadow:0 0 90px rgba(70,231,255,.18)}
+.market-orb:after{content:"ZENVY";position:absolute;width:190px;height:190px;border-radius:50%;display:grid;place-items:center;background:#07130e;color:#eafff4;font:700 29px "Space Grotesk";letter-spacing:2px;border:1px solid rgba(255,255,255,.12)}
+
+.token-box{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.rows,.contract-box{padding:26px;border:1px solid var(--line);border-radius:24px;background:rgba(9,26,18,.7);backdrop-filter:blur(18px)}
+.row{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid rgba(116,255,178,.1)}
+.row:last-child{border:0}.row span{color:var(--muted)}.row strong{color:#eafff4;text-align:right}
+.contract{padding:18px;border-radius:15px;background:#020806;border:1px dashed rgba(72,255,145,.3);font:12px Consolas,monospace;color:var(--mint);word-break:break-all}
+
+.service-grid{grid-template-columns:repeat(4,1fr)}
+.service{min-height:230px}
+.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.phase{padding:24px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,rgba(13,34,23,.72),rgba(4,13,9,.75))}
+.phase small{color:var(--green);font-weight:900;letter-spacing:1.4px}
+.phase h3{font-family:"Space Grotesk";font-size:21px}.phase p{color:var(--muted);line-height:1.7}
+
+.update{display:grid;grid-template-columns:100px 1fr;padding:22px 0;border-bottom:1px solid rgba(116,255,178,.12)}
+.update:last-child{border:0}.date{color:var(--green);font-weight:900}
+
+.cta{padding:48px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(135deg,rgba(13,42,27,.72),rgba(7,20,14,.82));box-shadow:var(--shadow)}
+footer{border-top:1px solid var(--line);padding:45px 0;color:var(--muted)}
+.foot{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}.foot-links{display:flex;gap:18px;flex-wrap:wrap}.foot-links a{text-decoration:none}.foot-links a:hover{color:var(--green)}
+
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s ease}.reveal.show{opacity:1;transform:none}
+@keyframes float{0%,100%{transform:perspective(700px) rotateX(7deg) translateY(0)}50%{transform:perspective(700px) rotateX(7deg) translateY(-16px)}}
+@keyframes pulse{0%,100%{transform:scale(.94);opacity:.7}50%{transform:scale(1.08);opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes blink{50%{opacity:.35}}
+@media(max-width:1000px){.links{display:none}.menu{display:block}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:430px}.glass-grid,.service-grid{grid-template-columns:repeat(2,1fr)}.roadmap{grid-template-columns:repeat(2,1fr)}.token-box,.zenvy-inner{grid-template-columns:1fr}}
+@media(max-width:650px){.hero{min-height:850px}.hero h1{letter-spacing:-3px}.hero-copy{font-size:16px}.hero-art{min-height:350px}.coin{width:220px;height:220px}.coin-z{font-size:110px}.orbit{width:330px;height:330px}.float-card{display:none}.stats-grid,.glass-grid,.service-grid,.roadmap{grid-template-columns:1fr}.stats{margin-top:-25px}section{padding:75px 0}.zenvy-inner{padding:25px}.update{grid-template-columns:1fr;gap:7px}}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="wrap navin">
-<a class="logo" href="#home"><img src="zno.svg" alt="ZENO NETWORK"><span>ZENO NETWORK</span></a>
-<button class="menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
-<div class="links"><a href="#about">About</a><a href="#apps">Apps</a><a href="#games">Games</a><a href="#zenvy">Zenvy</a><a href="#token">ZNO</a><a href="#services">Services</a><a href="#roadmap">Roadmap</a></div>
-</div></nav>
 
-<header class="hero" id="home"><div class="wrap">
-<span class="badge">● OFFICIAL ZENO NETWORK ECOSYSTEM</span>
-<h1>Build.<br><span>Connect.</span><br>Grow.</h1>
-<p>ZENO NETWORK is a growing digital ecosystem bringing together mobile apps, games, digital services, the ZNO utility token and the upcoming Zenvy marketplace.</p>
-<div class="buttons"><a class="btn primary" href="#apps">Explore Ecosystem</a><a class="btn secondary" href="whitepaper.pdf" target="_blank">Whitepaper</a><a class="btn secondary" href="https://bscscan.com/address/0x180B860aa47e9280F32D9f949596c0b012Efb198" target="_blank">BscScan</a></div>
-</div></header>
+<nav class="nav">
+<div class="wrap navin">
+<a class="logo" href="#home"><img src="zno.svg" alt="ZNO"><span>ZENO <em>NETWORK</em></span></a>
+<button class="menu" id="menu">☰</button>
+<div class="links" id="links">
+<a href="#about">About</a><a href="#apps">Apps</a><a href="#games">Games</a><a href="#zenvy">Zenvy</a><a href="#token">ZNO</a><a href="#services">Services</a><a href="#roadmap">Roadmap</a>
+</div>
+</div>
+</nav>
 
-<div class="stats"><div class="wrap statsgird"><div class="stat"><b>10B</b><small>ZNO total supply</small></div><div class="stat"><b>Apps</b><small>Mobile products</small></div><div class="stat"><b>Games</b><small>Web & mobile</small></div><div class="stat"><b>Zenvy</b><small>Marketplace</small></div></div></div>
+<header class="hero" id="home">
+<div class="wrap hero-grid">
+<div>
+<div class="kicker"><span class="dot"></span> OFFICIAL ZENO NETWORK ECOSYSTEM</div>
+<h1><span class="silver">BUILD.</span><br><span class="green">CONNECT.</span><br><span class="silver">GROW.</span></h1>
+<p class="hero-copy">A premium digital ecosystem bringing together mobile applications, games, professional digital services and the ZNO utility token — with Zenvy planned as the next major commerce platform.</p>
+<div class="hero-buttons">
+<a class="btn primary" href="#apps">Explore Ecosystem →</a>
+<a class="btn" href="whitepaper.pdf" target="_blank">Whitepaper</a>
+<a class="btn blue" href="https://bscscan.com/address/0x180B860aa47e9280F32D9f949596c0b012Efb198" target="_blank">View ZNO ↗</a>
+</div>
+<div class="contract-mini">Contract: <b>0x180B860aa47e9280F32D9f949596c0b012Efb198</b></div>
+</div>
 
-<section id="about"><div class="wrap"><div class="head"><span class="eyebrow">01 / ABOUT</span><h2>One network. Multiple digital products.</h2><p>ZENO NETWORK is being developed as a long-term digital ecosystem for apps, games, services and commerce.</p></div><div class="grid">
-<div class="card"><div class="icon">🌐</div><h3>Digital Ecosystem</h3><p>One official home for Zeno products, documentation and updates.</p></div>
-<div class="card"><div class="icon">⚡</div><h3>Utility First</h3><p>ZNO is designed around ecosystem utility and future integrations.</p></div>
-<div class="card"><div class="icon">🔐</div><h3>Transparency</h3><p>Important project and token information is presented openly.</p></div>
-</div></div></section>
+<div class="hero-art">
+<div class="glow"></div><div class="orbit"></div>
+<div class="coin"><div class="coin-z">Z</div><div class="coin-label">ZNO • ZENO NETWORK</div></div>
+<div class="float-card fc1"><strong>10B</strong>Fixed ZNO Supply</div>
+<div class="float-card fc2"><strong>VAULT</strong>Secure Digital Storage</div>
+<div class="float-card fc3"><strong>BNB</strong>Smart Chain</div>
+</div>
+</div>
+</header>
 
-<section id="apps"><div class="wrap"><div class="head"><span class="eyebrow">02 / ZENO APPS</span><h2>Apps built under ZENO.</h2><p>Your apps can be displayed here as a proper official portfolio.</p></div><div class="grid">
-<div class="card app"><div class="icon">📱</div><h3>Zeno Network</h3><p>Rewards, tasks, community features and ZNO ecosystem utilities.</p><span class="tag">ACTIVE</span></div>
-<div class="card app"><div class="icon">🔒</div><h3>Zeno Vault</h3><p>Secure storage for passwords, cards, documents and personal information.</p><span class="tag">ZENO PRODUCT</span></div>
-<div class="card app"><div class="icon">🧠</div><h3>Zeno Notes</h3><p>Private notes, data storage and premium productivity features.</p><span class="tag">ZENO PRODUCT</span></div>
-<div class="card app"><div class="icon">🚀</div><h3>More Apps</h3><p>New applications can be added here as they are released.</p><span class="tag">COMING SOON</span></div>
-</div></div></section>
+<div class="stats"><div class="wrap stats-grid">
+<div class="stat"><b>10B</b><span>ZNO total supply</span></div>
+<div class="stat"><b>02+</b><span>Active ecosystem products</span></div>
+<div class="stat"><b>WEB + APP</b><span>Digital product strategy</span></div>
+<div class="stat"><b>ZENVY</b><span>Future marketplace</span></div>
+</div></div>
 
-<section id="games"><div class="wrap"><div class="head"><span class="eyebrow">03 / GAMES</span><h2>Zeno gaming ecosystem.</h2><p>Future games can connect with the broader Zeno ecosystem while keeping gameplay simple.</p></div><div class="grid">
-<div class="card"><div class="icon">🎮</div><h3>Mobile Games</h3><p>Android-first games with scalable online systems.</p></div>
-<div class="card"><div class="icon">💎</div><h3>In-Game Utility</h3><p>Future eligible integrations may use ZNO.</p></div>
-<div class="card"><div class="icon">🌍</div><h3>Cross Platform</h3><p>Products can expand from mobile to web over time.</p></div>
-</div></div></section>
-
-<section id="zenvy"><div class="wrap"><div class="head"><span class="eyebrow">04 / ZENVY</span><h2>The future Zeno marketplace.</h2><p>Zenvy is planned as a large-scale e-commerce platform with its own Zeno identity.</p></div>
-<div class="market"><div><span class="badge">COMING SOON</span><h3>Zenvy Marketplace</h3><p>A future marketplace for products, sellers, deals, orders and digital commerce. The website will also become the public home for the Zenvy app.</p><div class="buttons"><a class="btn primary" href="#roadmap">Roadmap</a><a class="btn secondary" href="#contact">Partner</a></div></div><div class="marketvisual"><div><b>Z</b><br><strong>ZENVY</strong><br><small style="color:var(--m)">Marketplace</small></div></div></div>
+<section id="about"><div class="wrap">
+<div class="section-head reveal"><span class="eyebrow">01 / ZENO NETWORK</span><h2>One premium brand. Multiple digital products.</h2><p>ZENO NETWORK is being developed as a long-term digital ecosystem where apps, games, services, commerce and token utility can live under one recognizable identity.</p></div>
+<div class="glass-grid">
+<div class="glass reveal"><div class="icon">◈</div><h3>Digital Ecosystem</h3><p>Official home for Zeno products, announcements, documentation and future launches.</p><span class="tag">ECOSYSTEM</span></div>
+<div class="glass reveal"><div class="icon">⚡</div><h3>Utility Focused</h3><p>ZNO is positioned around practical ecosystem utility and future product integrations.</p><span class="tag">UTILITY</span></div>
+<div class="glass reveal"><div class="icon">◉</div><h3>Built to Scale</h3><p>A structure designed so new apps, games, services and commerce products can be added without rebuilding the brand.</p><span class="tag">LONG TERM</span></div>
+</div>
 </div></section>
 
-<section id="token"><div class="wrap"><div class="head"><span class="eyebrow">05 / ZNO TOKEN</span><h2>ZNO utility token.</h2><p>Keep official token information and verification links available from the main website.</p></div>
-<div class="token"><div class="card rows">
-<div class="row"><span>Token</span><strong>ZNO</strong></div><div class="row"><span>Network</span><strong>BNB Smart Chain</strong></div><div class="row"><span>Total Supply</span><strong>10,000,000,000</strong></div><div class="row"><span>Mintable</span><strong>No — fixed supply</strong></div><div class="row"><span>Contract</span><strong>See BscScan</strong></div>
-</div><div class="card"><h3>Official Contract</h3><div class="contract" id="contract">0x180B860aa47e9280F32D9f949596c0b012Efb198</div><div class="buttons"><button class="btn primary" onclick="copyC()">📋 Copy</button><a class="btn secondary" target="_blank" href="https://bscscan.com/address/0x180B860aa47e9280F32D9f949596c0b012Efb198">BscScan ↗</a></div><p id="copied" style="display:none;color:var(--g);font-weight:800">Copied.</p></div></div>
+<section id="apps"><div class="wrap">
+<div class="section-head reveal"><span class="eyebrow">02 / ZENO APPS</span><h2>Real products under ZENO.</h2><p>Professional product cards make the website feel like a real technology ecosystem rather than a simple token page.</p></div>
+<div class="glass-grid">
+<div class="glass app-card reveal"><div class="app-visual">ZNO</div><h3>Zeno Network</h3><p>Community, tasks, rewards and ZNO ecosystem utilities.</p><span class="tag">ACTIVE PRODUCT</span></div>
+<div class="glass app-card reveal"><div class="app-visual vault">⌁</div><h3>Zeno Vault</h3><p>Securely organize passwords, cards, Wi-Fi, crypto accounts, documents and other private information.</p><span class="tag">SECURITY APP</span></div>
+<div class="glass app-card reveal"><div class="app-visual future">+</div><h3>Future Zeno Apps</h3><p>New applications can be added here as the ecosystem expands.</p><span class="tag">COMING SOON</span></div>
+</div>
 </div></section>
 
-<section id="services"><div class="wrap"><div class="head"><span class="eyebrow">06 / DIGITAL SERVICES</span><h2>Zeno Network services.</h2><p>This section can also serve as your professional portfolio and connect naturally with your Fiverr work.</p></div><div class="grid services">
-<div class="card service"><div class="icon">📱</div><h3>Android Development</h3><p>Apps, UI, Firebase, APIs and Play Store preparation.</p></div>
-<div class="card service"><div class="icon">🛠️</div><h3>Bug Fixing</h3><p>Debugging, improvements and feature fixes.</p></div>
-<div class="card service"><div class="icon">🎨</div><h3>Web & Design</h3><p>Responsive websites, landing pages and graphics.</p></div>
-<div class="card service"><div class="icon">🎬</div><h3>Video Editing</h3><p>Promotional and social media video editing.</p></div>
-<div class="card service"><div class="icon">🛒</div><h3>E-commerce</h3><p>Store websites and marketplace systems.</p></div>
-<div class="card service"><div class="icon">🔥</div><h3>Firebase & APIs</h3><p>Auth, Firestore, Functions and backend integrations.</p></div>
-<div class="card service"><div class="icon">💳</div><h3>AdMob & Billing</h3><p>Rewarded ads, monetization and Play Billing.</p></div>
-<div class="card service"><div class="icon">💼</div><h3>Fiverr Services</h3><p>Digital services offered under the Zeno Network brand.</p></div>
+<section id="games"><div class="wrap">
+<div class="section-head reveal"><span class="eyebrow">03 / ZENO GAMES</span><h2>Gaming with a Zeno identity.</h2><p>Future mobile and web games can become independent products while remaining connected to the wider ecosystem.</p></div>
+<div class="glass-grid">
+<div class="glass reveal"><div class="icon">✦</div><h3>Mobile Games</h3><p>Android-first games with polished UI and scalable online systems.</p></div>
+<div class="glass reveal"><div class="icon">◇</div><h3>In-Game Utility</h3><p>Eligible future products may integrate ZNO-based utility where appropriate.</p></div>
+<div class="glass reveal"><div class="icon">∞</div><h3>Cross Platform</h3><p>Products can expand from mobile to web and other platforms over time.</p></div>
+</div>
+</div></section>
+
+<section id="zenvy"><div class="wrap">
+<div class="section-head reveal"><span class="eyebrow">04 / ZENVY — NEXT STAGE</span><h2>The future Zeno marketplace.</h2><p>Zenvy will be developed as a separate international e-commerce brand inspired by large marketplace experiences, while keeping its own Zeno identity.</p></div>
+<div class="zenvy reveal"><div class="zenvy-inner">
+<div><span class="kicker">COMING SOON</span><h2 style="font-family:'Space Grotesk';font-size:46px;margin:18px 0 10px">Zenvy Marketplace</h2><p style="color:var(--muted);line-height:1.85;max-width:600px">Products • Sellers • Deals • Orders • Digital commerce • Mobile app. This section is intentionally ready for the next development stage.</p><div class="hero-buttons"><a class="btn primary" href="#roadmap">View Roadmap →</a><a class="btn" href="#contact">Partner With Zeno</a></div></div>
+<div class="market-orb"></div>
+</div></div>
+</div></section>
+
+<section id="token"><div class="wrap">
+<div class="section-head reveal"><span class="eyebrow">05 / ZNO TOKEN</span><h2>Simple. Clear. Verifiable.</h2><p>Keep the important token information visible without making the website look like a traditional crypto landing page.</p></div>
+<div class="token-box">
+<div class="rows reveal">
+<div class="row"><span>Token</span><strong>ZNO</strong></div><div class="row"><span>Network</span><strong>BNB Smart Chain</strong></div><div class="row"><span>Total Supply</span><strong>10,000,000,000 ZNO</strong></div><div class="row"><span>Supply</span><strong>Fixed / Non-Mintable</strong></div><div class="row"><span>Contract</span><strong>0x180B...EfB198</strong></div>
+</div>
+<div class="contract-box reveal"><h3 style="font-family:'Space Grotesk';font-size:25px">Official Smart Contract</h3><div class="contract" id="contract">0x180B860aa47e9280F32D9f949596c0b012Efb198</div><div class="hero-buttons"><button class="btn primary" id="copy">Copy Address</button><a class="btn" href="https://bscscan.com/address/0x180B860aa47e9280F32D9f949596c0b012Efb198" target="_blank">BscScan ↗</a></div><p id="copied" style="display:none;color:var(--green);font-weight:800">✓ Address copied</p></div>
+</div>
+</div></section>
+
+<section id="services"><div class="wrap">
+<div class="section-head reveal"><span class="eyebrow">06 / ZENO SERVICES</span><h2>Professional digital services.</h2><p>This area can represent the same services offered through your Fiverr work, under the Zeno Network brand.</p></div>
+<div class="glass-grid service-grid">
+<div class="glass service reveal"><div class="icon">▣</div><h3>Android Development</h3><p>Modern Android apps, UI, Firebase, APIs and Play Store preparation.</p></div>
+<div class="glass service reveal"><div class="icon">⌁</div><h3>Bug Fixing</h3><p>Debugging, performance improvements and feature fixes.</p></div>
+<div class="glass service reveal"><div class="icon">◫</div><h3>Web & UI Design</h3><p>Responsive websites, landing pages and professional interfaces.</p></div>
+<div class="glass service reveal"><div class="icon">▶</div><h3>Video Editing</h3><p>Promotional, social and product videos.</p></div>
+<div class="glass service reveal"><div class="icon">◇</div><h3>E-commerce</h3><p>Store websites, marketplace concepts and shopping systems.</p></div>
+<div class="glass service reveal"><div class="icon">F</div><h3>Firebase & APIs</h3><p>Authentication, Firestore, Cloud Functions and integrations.</p></div>
+<div class="glass service reveal"><div class="icon">₿</div><h3>AdMob & Billing</h3><p>Rewarded ads, monetization and Google Play Billing integration.</p></div>
+<div class="glass service reveal"><div class="icon">✦</div><h3>Fiverr Services</h3><p>Professional development and digital services under Zeno Network.</p></div>
+</div>
+</div></section>
+
+<section id="roadmap"><div class="wrap">
+<div class="section-head reveal"><span class="eyebrow">07 / ROADMAP</span><h2>Build it step by step.</h2></div>
+<div class="roadmap">
+<div class="phase reveal"><small>PHASE 01</small><h3>Foundation</h3><p>Brand, official website, token infrastructure and community.</p></div>
+<div class="phase reveal"><small>PHASE 02</small><h3>Products</h3><p>Zeno Network, Zeno Vault and additional applications.</p></div>
+<div class="phase reveal"><small>PHASE 03</small><h3>Services</h3><p>Expand digital services, partnerships and client work.</p></div>
+<div class="phase reveal"><small>PHASE 04</small><h3>Zenvy</h3><p>Design and develop the marketplace web and mobile ecosystem.</p></div>
+</div>
+</div></section>
+
+<section id="updates"><div class="wrap">
+<div class="section-head reveal"><span class="eyebrow">08 / UPDATES</span><h2>Latest from Zeno.</h2><p>Use this section later for real announcements, app releases and token updates.</p></div>
+<div class="glass reveal">
+<div class="update"><div class="date">NOW</div><div><strong>Zeno ecosystem website</strong><p>Premium official website structure established for apps, services, ZNO and future commerce.</p></div></div>
+<div class="update"><div class="date">NEXT</div><div><strong>Zenvy planning</strong><p>Marketplace architecture, product categories, seller flow and mobile app planning.</p></div></div>
+<div class="update"><div class="date">ONGOING</div><div><strong>ZNO ecosystem</strong><p>Continue developing practical utility around Zeno products.</p></div></div>
+</div>
+</div></section>
+
+<section id="contact"><div class="wrap"><div class="cta reveal">
+<span class="eyebrow">09 / CONNECT</span><h2 style="font-family:'Space Grotesk';font-size:42px;margin:12px 0">Follow the official Zeno Network.</h2>
+<p style="color:var(--muted);line-height:1.8">Official announcements, product updates, partnerships and community information.</p>
+<div class="hero-buttons"><a class="btn primary" href="https://t.me/znonetwork" target="_blank">Telegram</a><a class="btn" href="https://x.com/ZenoNetworkZNO" target="_blank">X / Twitter</a><a class="btn" href="whitepaper.pdf" target="_blank">Whitepaper</a></div>
 </div></div></section>
 
-<section id="roadmap"><div class="wrap"><div class="head"><span class="eyebrow">07 / ROADMAP</span><h2>Growing step by step.</h2></div><div class="timeline">
-<div class="phase"><small>PHASE 01</small><h3>Foundation</h3><p>Brand, website, token infrastructure and community.</p></div>
-<div class="phase"><small>PHASE 02</small><h3>Apps & Games</h3><p>Launch and improve useful mobile products.</p></div>
-<div class="phase"><small>PHASE 03</small><h3>Services</h3><p>Expand digital services and partnerships.</p></div>
-<div class="phase"><small>PHASE 04</small><h3>Zenvy</h3><p>Develop the marketplace app and commerce ecosystem.</p></div>
-</div></div></section>
+<section><div class="wrap"><div class="glass"><h3>Disclaimer</h3><p>ZENO NETWORK (ZNO) is presented as a utility-focused digital ecosystem. Website information is informational only and is not financial, investment, legal or tax advice. Roadmap items may change during development.</p></div></div></section>
 
-<section id="updates"><div class="wrap"><div class="head"><span class="eyebrow">08 / UPDATES</span><h2>Latest from Zeno.</h2><p>Use this area for token announcements, app releases and Zenvy progress.</p></div><div class="card">
-<div class="update"><div class="date">2026</div><div><strong>Zeno ecosystem expansion</strong><p>Apps, services and Zenvy are being developed as separate products under the Zeno brand.</p></div></div>
-<div class="update"><div class="date">NEXT</div><div><strong>Zenvy development</strong><p>Marketplace planning, store architecture and mobile app development.</p></div></div>
-<div class="update"><div class="date">ONGOING</div><div><strong>ZNO ecosystem</strong><p>Continue building practical utility around ZNO and Zeno products.</p></div></div>
-</div></div></section>
-
-<section id="contact"><div class="wrap"><div class="cta"><span class="eyebrow">09 / CONNECT</span><h2>Follow the official Zeno Network.</h2><p style="color:var(--m);line-height:1.8">Official announcements, product updates, partnerships and community information.</p><div class="buttons"><a class="btn primary" href="https://t.me/znonetwork" target="_blank">Telegram</a><a class="btn secondary" href="https://x.com/ZenoNetworkZNO" target="_blank">X / Twitter</a><a class="btn secondary" href="whitepaper.pdf" target="_blank">Whitepaper</a></div></div></div></section>
-
-<section><div class="wrap"><div class="card"><h3>Disclaimer</h3><p>ZENO NETWORK (ZNO) is presented as a utility-focused digital ecosystem. Website information is informational only and is not financial, investment, legal or tax advice. Roadmap items may change during development.</p></div></div></section>
-
-<footer><div class="wrap foot"><div><strong style="color:#fff">ZENO NETWORK (ZNO)</strong><br>Apps • Games • Services • Zenvy</div><div class="flinks"><a href="#apps">Apps</a><a href="#zenvy">Zenvy</a><a href="#token">ZNO</a><a href="https://t.me/znonetwork" target="_blank">Telegram</a><a href="https://x.com/ZenoNetworkZNO" target="_blank">X</a></div><div>© 2026 ZENO NETWORK. All rights reserved.</div></div></footer>
+<footer><div class="wrap foot"><div><strong style="color:#fff;font-family:'Space Grotesk'">ZENO NETWORK</strong><br>ZNO • Apps • Games • Services • Zenvy</div><div class="foot-links"><a href="#apps">Apps</a><a href="#zenvy">Zenvy</a><a href="#token">ZNO</a><a href="https://t.me/znonetwork" target="_blank">Telegram</a><a href="https://x.com/ZenoNetworkZNO" target="_blank">X</a></div><div>© 2026 ZENO NETWORK. All rights reserved.</div></div></footer>
 
 <script>
-function copyC(){navigator.clipboard.writeText(document.getElementById('contract').textContent.trim()).then(()=>{let x=document.getElementById('copied');x.style.display='block';setTimeout(()=>x.style.display='none',1800)})}
+const menu=document.getElementById("menu"),links=document.getElementById("links");
+menu.addEventListener("click",()=>links.classList.toggle("open"));
+document.querySelectorAll(".links a").forEach(a=>a.addEventListener("click",()=>links.classList.remove("open")));
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(x=>observer.observe(x));
+document.getElementById("copy").addEventListener("click",async()=>{
+ try{await navigator.clipboard.writeText(document.getElementById("contract").textContent.trim());}
+ catch(e){const t=document.createElement("textarea");t.value=document.getElementById("contract").textContent.trim();document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();}
+ const c=document.getElementById("copied");c.style.display="block";setTimeout(()=>c.style.display="none",1800);
+});
 </script>
 </body>
 </html>
