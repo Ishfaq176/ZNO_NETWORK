@@ -278,6 +278,164 @@ footer{border-top:1px solid var(--line);padding:45px 0;color:var(--muted)}
 @keyframes spin{to{transform:rotate(360deg)}}@keyframes blink{50%{opacity:.35}}
 @media(max-width:1000px){.links{display:none}.menu{display:block}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:430px}.glass-grid,.service-grid{grid-template-columns:repeat(2,1fr)}.roadmap{grid-template-columns:repeat(2,1fr)}.token-box,.zenvy-inner{grid-template-columns:1fr}}
 @media(max-width:650px){.hero{min-height:850px}.hero h1{letter-spacing:-3px}.hero-copy{font-size:16px}.hero-art{min-height:350px}.coin{width:220px;height:220px}.coin-logo-3d{width:150px;height:150px}.coin-logo-3d img{width:118px;height:118px}.orbit{width:330px;height:330px}.float-card{display:none}.stats-grid,.glass-grid,.service-grid,.roadmap{grid-template-columns:1fr}.stats{margin-top:-25px}section{padding:75px 0}.zenvy-inner{padding:25px}.update{grid-template-columns:1fr;gap:7px}}
+
+/* ===== PREMIUM 3D GLASS BRAND ===== */
+.navin{gap:18px}
+.logo{
+  position:relative;
+  min-height:56px;
+  padding:7px 16px 7px 8px;
+  gap:12px;
+  border:1px solid rgba(166,255,208,.24);
+  border-radius:18px;
+  background:
+    linear-gradient(145deg,rgba(72,255,145,.16),rgba(70,231,255,.075) 48%,rgba(7,18,13,.70));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.14),
+    inset 0 -12px 30px rgba(0,0,0,.16),
+    0 12px 35px rgba(0,0,0,.28),
+    0 0 25px rgba(72,255,145,.07);
+  backdrop-filter:blur(22px) saturate(165%);
+  transform:perspective(700px) rotateX(2deg);
+  transition:.35s cubic-bezier(.2,.8,.2,1);
+  overflow:hidden;
+}
+.logo:before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:18px;
+  background:linear-gradient(115deg,transparent 18%,rgba(255,255,255,.16) 43%,transparent 61%);
+  transform:translateX(-120%);
+  transition:.7s;
+  pointer-events:none;
+}
+.logo:hover{
+  transform:perspective(700px) translateY(-4px) rotateX(4deg) rotateY(-2deg) scale(1.02);
+  border-color:rgba(72,255,145,.52);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.18),
+    0 22px 55px rgba(0,0,0,.40),
+    0 0 35px rgba(72,255,145,.14);
+}
+.logo:hover:before{transform:translateX(120%)}
+.logo img{
+  width:45px;height:45px;
+  padding:5px;
+  border-radius:13px;
+  background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(72,255,145,.07));
+  border:1px solid rgba(255,255,255,.12);
+  filter:
+    drop-shadow(2px 3px 0 #0a3a23)
+    drop-shadow(4px 6px 0 #041b10)
+    drop-shadow(0 0 15px rgba(72,255,145,.55));
+  transform:translateZ(18px);
+}
+.logo span{
+  font-family:"Space Grotesk";
+  font-size:17px;
+  font-weight:800;
+  letter-spacing:1.1px;
+  color:#f3fff8;
+  text-shadow:0 3px 12px rgba(0,0,0,.45);
+  white-space:nowrap;
+}
+.logo span:first-letter{color:var(--mint)}
+.logo em{
+  font-style:normal;
+  background:linear-gradient(90deg,var(--green),var(--cyan),#a6ffd0);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow:none;
+}
+
+/* ===== GLASS CATEGORY NAVIGATION ===== */
+.links{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:8px;
+  padding:6px;
+  border:1px solid rgba(116,255,178,.13);
+  border-radius:20px;
+  background:rgba(5,17,11,.48);
+  backdrop-filter:blur(20px) saturate(150%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 10px 30px rgba(0,0,0,.20);
+}
+.links a{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:38px;
+  padding:0 12px;
+  border:1px solid rgba(116,255,178,.10);
+  border-radius:12px;
+  background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(72,255,145,.025));
+  color:#cfe5d9;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.45px;
+  text-decoration:none;
+  transition:.30s cubic-bezier(.2,.8,.2,1);
+  overflow:hidden;
+}
+.links a:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.11) 48%,transparent 72%);
+  transform:translateX(-120%);
+  transition:.55s;
+}
+.links a:hover{
+  color:#f1fff7;
+  transform:translateY(-4px) perspective(500px) rotateX(4deg);
+  border-color:rgba(72,255,145,.48);
+  background:linear-gradient(145deg,rgba(72,255,145,.14),rgba(70,231,255,.06));
+  box-shadow:0 12px 28px rgba(0,0,0,.28),0 0 20px rgba(72,255,145,.08),inset 0 1px 0 rgba(255,255,255,.12);
+}
+.links a:hover:before{transform:translateX(120%)}
+.links a.active{
+  color:#07140d;
+  border-color:transparent;
+  background:linear-gradient(135deg,var(--green),var(--mint));
+  box-shadow:0 8px 22px rgba(72,255,145,.20);
+}
+
+/* ===== CLEAN 3D LOGO COIN ===== */
+.coin-label{display:none!important}
+.coin{
+  overflow:visible;
+  transform:perspective(700px) rotateX(7deg) rotateY(-2deg);
+}
+.coin-logo-3d{
+  transform:translateY(-8px) perspective(700px) rotateX(8deg) rotateY(-7deg) translateZ(18px);
+}
+
+@media(max-width:900px){
+  .links{
+    gap:6px;
+    flex-wrap:wrap;
+    justify-content:center;
+    padding:7px;
+  }
+  .links a{padding:0 9px;font-size:10px}
+}
+@media(max-width:768px){
+  .logo{padding-right:12px}
+  .logo span{font-size:14px}
+  .links{
+    position:absolute;
+    top:72px;left:4%;right:4%;
+    display:none;
+    border-radius:18px;
+  }
+  .links.open{display:flex}
+  .links a{flex:1 1 auto}
+}
+
 </style>
 </head>
 <body>
@@ -308,7 +466,7 @@ footer{border-top:1px solid var(--line);padding:45px 0;color:var(--muted)}
 
 <div class="hero-art">
 <div class="glow"></div><div class="orbit"></div>
-<div class="coin"><div class="coin-logo-3d"><img src="zno.svg" alt="ZNO Network 3D logo"></div><div class="coin-label">ZNO • ZENO NETWORK</div></div>
+<div class="coin"><div class="coin-logo-3d"><img src="zno.svg" alt="ZNO 3D logo"></div></div>
 <div class="float-card fc1"><strong>10B</strong>Fixed ZNO Supply</div>
 <div class="float-card fc2"><strong>VAULT</strong>Secure Digital Storage</div>
 <div class="float-card fc3"><strong>BNB</strong>Smart Chain</div>
@@ -423,5 +581,31 @@ document.getElementById("copy").addEventListener("click",async()=>{
  const c=document.getElementById("copied");c.style.display="block";setTimeout(()=>c.style.display="none",1800);
 });
 </script>
+
+<script>
+/* Premium glass navigation: highlight the section currently in view. */
+(function(){
+  const links = [...document.querySelectorAll('.links a')];
+  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+  const setActive = () => {
+    const y = window.scrollY + 150;
+    let current = sections[0];
+    sections.forEach(s => { if (s.offsetTop <= y) current = s; });
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
+  };
+
+  window.addEventListener('scroll', setActive, {passive:true});
+  setActive();
+
+  const menu = document.getElementById('menu');
+  const navLinks = document.getElementById('links');
+  if(menu && navLinks){
+    menu.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  }
+})();
+</script>
+
 </body>
 </html>
