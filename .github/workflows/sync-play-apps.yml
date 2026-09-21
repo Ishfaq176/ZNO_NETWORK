@@ -1,0 +1,41 @@
+name: Sync Google Play apps
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-google-play-apps
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out website
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Read Zeno Network Labs apps from Google Play
+        run: node scripts/sync-play-apps.mjs
+
+      - name: Publish app-list changes
+        shell: bash
+        run: |
+          if git diff --quiet -- data/play-apps.json; then
+            echo "Google Play app list is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/play-apps.json
+          git commit -m "chore: sync Zeno Network Labs Play Store apps"
+          git push

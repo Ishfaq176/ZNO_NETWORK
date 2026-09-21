@@ -1,0 +1,22 @@
+{
+  "developer": "Zeno Network Labs",
+  "developerUrl": "https://play.google.com/store/apps/developer?id=Zeno+Network+Labs&hl=en&gl=US",
+  "apps": [
+    {
+      "name": "Zeno Network",
+      "packageName": "com.zenonetwork.zenoapp",
+      "developer": "Zeno Network Labs",
+      "description": "Earn Zeno Points by completing simple tasks, ads videos Zeno Network community.",
+      "icon": "https://play-lh.googleusercontent.com/MxCSFwE37O20ONjKL__vod5ufQINWsGOdFqOG_wG0f7ADoMBE_7rgI6yeWr6oDgoM9P08fFDwfHVc5zaZNbhMw=s0-br30",
+      "url": "https://play.google.com/store/apps/details?id=com.zenonetwork.zenoapp&hl=en&gl=US"
+    },
+    {
+      "name": "Zeno Vault",
+      "packageName": "com.zenonetwork.zenonotes",
+      "developer": "Zeno Network Labs",
+      "description": "Secure notes app to store passwords, emails, personal data, media & ledger",
+      "icon": "https://play-lh.googleusercontent.com/HuPJA-U8gtx2POajDS1fhDFGM-gdHfr20ejaSne5zOS-Nhec8KbZUpNDHK3k_xEZF4o1aVnKlOU1C_RCrtG5=s0-br30",
+      "url": "https://play.google.com/store/apps/details?id=com.zenonetwork.zenonotes&hl=en&gl=US"
+    }
+  ]
+}

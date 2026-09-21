@@ -1,158 +1,224 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ZENO NETWORK | Official Digital Ecosystem</title>
-<meta name="description" content="ZENO NETWORK — apps, games, digital services, ZNO utility and the future Zenvy marketplace.">
-<meta property="og:title" content="ZENO NETWORK | Official">
-<meta property="og:description" content="Apps, games, digital services, ZNO and Zenvy.">
-<meta property="og:image" content="banner.jpeg">
-<meta name="theme-color" content="#06100d">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="styles.css?v=20260908">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Zeno Network | Apps, Software, Games & Digital Services</title>
+  <meta name="description" content="Zeno Network Labs builds Android apps, business software, games and digital products. Explore official Google Play apps and projects in development.">
+  <meta name="theme-color" content="#071119">
+  <meta property="og:title" content="Zeno Network | Digital Products Built to Grow">
+  <meta property="og:description" content="Official home of Zeno Network Labs apps, software, games and services.">
+  <meta property="og:image" content="https://zenonetwork.xyz/banner.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260921">
+  <script src="site.js?v=20260921" defer></script>
 </head>
 <body>
-<a class="skip-link" href="#main-content">Skip to content</a>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
 
-<nav class="nav">
-<div class="wrap navin">
-<a class="logo" href="#home"><img src="zno.svg" alt="ZNO"><span>ZENO <em>NETWORK</em></span></a>
-<button class="menu" id="menu" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="links">☰</button>
-<div class="links" id="links">
-<a href="#about">About</a><a href="apps.html">Apps</a><a href="apps.html#office-apps">Office Apps</a><a href="#games">Games</a><a href="#software">Software</a><a href="#zenvy">Zenvy</a><a href="#token">ZNO</a><a href="#fiverr">Fiverr Work</a><a href="#roadmap">Roadmap</a>
-</div>
-</div>
-</nav>
+  <header class="site-header" id="site-header">
+    <div class="shell nav-shell">
+      <a class="brand" href="#top" aria-label="Zeno Network home">
+        <img src="zno.svg" alt="" width="46" height="46">
+        <span>ZENO <strong>NETWORK</strong></span>
+      </a>
+      <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation"><span></span><span></span><span></span></button>
+      <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+        <a href="apps.html">Apps</a>
+        <a href="#products">Products</a>
+        <a href="#services">Services</a>
+        <a href="#token">ZNO</a>
+        <a href="#roadmap">Roadmap</a>
+        <a class="nav-cta" href="https://www.fiverr.com/mrishfaq" target="_blank" rel="noopener noreferrer">Hire on Fiverr <span>↗</span></a>
+      </nav>
+    </div>
+  </header>
 
-<main id="main-content">
-<header class="hero" id="home">
-<div class="wrap hero-grid">
-<div>
-<div class="kicker"><span class="dot"></span> OFFICIAL ZENO NETWORK ECOSYSTEM</div>
-<h1><span class="silver">BUILD.</span><br><span class="green">CONNECT.</span><br><span class="silver">GROW.</span></h1>
-<p class="hero-copy">Mobile apps, games and digital services, connected by one vision. Explore Zeno products and discover what we’re building next.</p>
-<div class="hero-buttons">
-<a class="btn primary" href="apps.html">Explore Ecosystem →</a>
-<a class="btn" href="Whitepaper.pdf" target="_blank" rel="noopener noreferrer">Whitepaper</a>
-<a class="btn blue" href="https://bscscan.com/address/0x180B860aa47e9280F32D9f949596c0b012Efb198" target="_blank" rel="noopener noreferrer">View ZNO ↗</a>
-</div>
-<div class="contract-mini">Contract: <b>0x180B860aa47e9280F32D9f949596c0b012Efb198</b></div>
-</div>
+  <main id="main-content">
+    <section class="hero" id="top">
+      <div class="hero-ambient" aria-hidden="true"></div>
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <div class="status-pill reveal"><span></span>Zeno Network Labs · Pakistan</div>
+          <h1 class="reveal">Digital products<br><em>built to grow.</em></h1>
+          <p class="hero-lead reveal">We build useful Android apps, powerful business software and original games under one focused technology brand.</p>
+          <div class="hero-actions reveal">
+            <a class="button button-primary" href="apps.html">Explore our products <span>→</span></a>
+            <a class="button button-secondary" href="https://play.google.com/store/apps/developer?id=Zeno+Network+Labs" target="_blank" rel="noopener noreferrer">Google Play profile <span>↗</span></a>
+          </div>
+          <div class="hero-proof reveal" aria-label="Zeno Network highlights">
+            <div><strong id="official-app-count">2</strong><span>Published apps</span></div>
+            <div><strong>10B</strong><span>Fixed ZNO supply</span></div>
+            <div><strong>Apps · PC</strong><span>Product platforms</span></div>
+          </div>
+        </div>
+        <div class="hero-media reveal">
+          <div class="hero-image-frame">
+            <img src="banner.jpeg" alt="Zeno Network digital ecosystem" width="1536" height="1024">
+          </div>
+          <div class="media-card media-card-top"><span class="signal-dot"></span><div><small>OFFICIAL STUDIO</small><strong>Zeno Network Labs</strong></div></div>
+          <div class="media-card media-card-bottom"><small>BUILDING ACROSS</small><strong>Mobile · Desktop · Web</strong></div>
+        </div>
+      </div>
+    </section>
 
-<div class="hero-art">
-<div class="glow"></div><div class="orbit"></div>
-<div class="coin"><div class="coin-logo-3d"><img src="zno.svg" alt="ZNO 3D logo"></div></div>
-<div class="float-card fc1"><strong>10B</strong>Fixed ZNO Supply</div>
-<div class="float-card fc2"><strong>VAULT</strong>Secure Digital Storage</div>
-<div class="float-card fc3"><strong>BNB</strong>Smart Chain</div>
-</div>
-</div>
-</header>
+    <section class="trust-strip" aria-label="Zeno Network product areas">
+      <div class="shell trust-grid reveal">
+        <span>ANDROID DEVELOPMENT</span><i></i><span>BUSINESS SOFTWARE</span><i></i><span>ORIGINAL GAMES</span><i></i><span>DIGITAL SERVICES</span>
+      </div>
+    </section>
 
-<div class="stats"><div class="wrap stats-grid">
-<div class="stat"><b>10B</b><span>ZNO total supply</span></div>
-<div class="stat"><b>APPS + ERP</b><span>Products in the Zeno ecosystem</span></div>
-<div class="stat"><b>WEB + APP</b><span>Digital product strategy</span></div>
-<div class="stat"><b>ZENVY</b><span>Future marketplace</span></div>
-</div></div>
+    <section class="section" id="about">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div class="heading-index"><span>01</span><small>THE STUDIO</small></div>
+          <div><p class="overline">ONE BRAND. MULTIPLE PRODUCTS.</p><h2>Technology with a clear purpose.</h2><p>Zeno Network brings apps, software, games and digital services together under one reliable identity—designed for real users and built for long-term improvement.</p></div>
+        </div>
+        <div class="feature-grid">
+          <article class="premium-card reveal"><span class="card-number">01</span><div class="card-icon">UX</div><h3>Useful by design</h3><p>Every product begins with a real problem and a simpler way to solve it.</p></article>
+          <article class="premium-card reveal"><span class="card-number">02</span><div class="card-icon">UI</div><h3>Polished experience</h3><p>Clear interfaces, responsive layouts and thoughtful details across mobile and desktop.</p></article>
+          <article class="premium-card reveal"><span class="card-number">03</span><div class="card-icon">∞</div><h3>Built to evolve</h3><p>A growing ecosystem where each new release strengthens the wider Zeno brand.</p></article>
+        </div>
+      </div>
+    </section>
 
-<section id="about"><div class="wrap">
-<div class="section-head reveal"><span class="eyebrow">01 / ZENO NETWORK</span><h2>One network.<br>More possibilities.</h2><p>ZENO NETWORK is being developed as a long-term digital ecosystem where apps, games, services, commerce and token utility can live under one recognizable identity.</p></div>
-<div class="glass-grid">
-<div class="glass reveal"><div class="icon">◈</div><h3>Digital Ecosystem</h3><p>Official home for Zeno products, announcements, documentation and future launches.</p><span class="tag">ECOSYSTEM</span></div>
-<div class="glass reveal"><div class="icon">⚡</div><h3>Utility Focused</h3><p>ZNO is positioned around practical ecosystem utility and future product integrations.</p><span class="tag">UTILITY</span></div>
-<div class="glass reveal"><div class="icon">◉</div><h3>Built to Scale</h3><p>A structure designed so new apps, games, services and commerce products can be added without rebuilding the brand.</p><span class="tag">LONG TERM</span></div>
-</div>
-</div></section>
+    <section class="section section-tinted" id="official-apps">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div class="heading-index"><span>02</span><small>GOOGLE PLAY</small></div>
+          <div><p class="overline">OFFICIAL AND PUBLISHED</p><h2>Apps from Zeno Network Labs.</h2><p>This list is connected to our official Google Play developer profile and checks automatically for newly published public apps.</p></div>
+        </div>
+        <div class="sync-bar reveal"><div><span class="signal-dot"></span><strong>Automatic Play Store sync</strong><small>Official published apps only</small></div><a href="https://play.google.com/store/apps/developer?id=Zeno+Network+Labs" target="_blank" rel="noopener noreferrer">Open developer profile ↗</a></div>
+        <div class="app-grid" id="play-apps-preview" aria-live="polite">
+          <div class="app-skeleton"></div><div class="app-skeleton"></div>
+        </div>
+        <div class="section-action reveal"><a class="button button-primary" href="apps.html">View all apps and projects <span>→</span></a></div>
+      </div>
+    </section>
 
-<section id="apps"><div class="wrap apps-callout"><div><span class="eyebrow">02 / ZENO APPS</span><h2>Everyday tools.<br>Built by Zeno.</h2><p>Explore Zeno Network and Zeno Vault, plus Zenvy, Zeno Scan Pro and Zeno Launcher in development.</p><a class="btn primary" href="apps.html">Discover our apps →</a></div><div class="app-logo-row"><img src="zno.svg" alt="Zeno Network" width="96" height="96"><img src="zeno-vault-icon.png" alt="Zeno Vault" width="96" height="96"><img src="zenvy-app-icon.png" alt="Zenvy" width="96" height="96"></div></div></section>
+    <section class="section" id="products">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div class="heading-index"><span>03</span><small>PRODUCTS</small></div>
+          <div><p class="overline">A GROWING ECOSYSTEM</p><h2>One studio. Four product worlds.</h2><p>Explore released products and follow the applications, games and business tools currently taking shape.</p></div>
+        </div>
+        <div class="product-world-grid">
+          <a class="world-card world-card-apps reveal" href="apps.html#official-apps"><span class="world-code">01 / MOBILE</span><h3>Android Apps</h3><p>Official Play Store releases and new mobile products in development.</p><span class="world-link">Explore apps →</span></a>
+          <a class="world-card world-card-office reveal" href="apps.html#office-apps"><span class="world-code">02 / PRODUCTIVITY</span><h3>Office & Business</h3><p>Document tools, converters, typing education and complete ERP systems.</p><span class="world-link">View office tools →</span></a>
+          <a class="world-card world-card-games reveal" href="#games"><span class="world-code">03 / INTERACTIVE</span><h3>Original Games</h3><p>Mobile and PC experiences built around skill, adventure and competition.</p><span class="world-link">Discover games →</span></a>
+          <a class="world-card world-card-services reveal" href="#services"><span class="world-code">04 / CLIENT WORK</span><h3>Digital Services</h3><p>Android, web, Firebase, design and publishing support for client projects.</p><span class="world-link">See services →</span></a>
+        </div>
+      </div>
+    </section>
 
-<section id="games"><div class="wrap">
-<div class="section-head reveal"><span class="eyebrow">03 / ZENO GAMES</span><h2>Adventure is<br>taking shape.</h2><p>A new game project in development, with exploration, action and discovery at its heart.</p></div>
-<div class="game-feature glass reveal"><div><span class="tag">IN DEVELOPMENT</span><h3>Zeno Adventure</h3><p>A planned offline 3D action-adventure game. The design targets 100 levels across 10 islands, with exploration, treasure hunts and increasingly challenging missions.</p><div class="vault-features"><span>3D adventure</span><span>Offline play planned</span><span>Exploration & missions</span></div></div><div class="game-plan"><span>THE DESIGN VISION</span><strong>10 islands.<br>100 levels.<br>One adventure.</strong><p>Planned scope; gameplay and release details may evolve during development.</p></div></div>
-<div class="glass reveal" style="margin-top:24px"><span class="tag">LEARNING GAMES · IN DEVELOPMENT</span><h3>Zeno Typing Academy</h3><p>Discover typing-powered adventure and racing game concepts alongside guided keyboard practice.</p><a class="btn" style="margin-top:20px" href="typing-academy.html">Explore learning games →</a></div></div></section>
-<section id="software"><div class="wrap"><div class="section-head reveal"><span class="eyebrow">SOFTWARE & WEB</span><h2>Tools for work.<br>Room to grow.</h2><p>Business software and web projects under development across the Zeno ecosystem.</p></div><div class="glass-grid software-grid">
-<article class="glass reveal"><div class="icon" aria-hidden="true">ZT</div><span class="tag">ACTIVE DEVELOPMENT</span><h3>Zen Tech ERP</h3><p>Business and accounting software being developed for mills and other businesses, including the ZenRiceMill project. Work includes vouchers, stock workflows, financial-year handling and multi-user setup.</p><div class="vault-features"><span>Accounting</span><span>Inventory</span><span>Multi-user workflows</span></div></article>
-<article class="glass reveal"><div class="icon" aria-hidden="true">ZV</div><span class="tag">PLANNED WEB EXTENSION</span><h3>Zeno Vault Web</h3><p>A planned desktop-browser companion for Zeno Vault, making account access and data entry easier on a PC. Web access and synchronization are still being scoped.</p><div class="vault-features"><span>Desktop browser</span><span>Data entry</span><span>Vault companion</span></div></article>
-<article class="glass reveal"><div class="icon" aria-hidden="true">ZN</div><span class="tag">WEBSITE</span><h3>Zeno Network</h3><p>The official website brings together Zeno apps, games, business software, digital services and ZNO information, with dedicated space to follow products in development.</p><a class="btn" href="apps.html">Browse Zeno apps →</a></article>
-</div></div></section>
+    <section class="section section-tinted" id="games">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div class="heading-index"><span>04</span><small>GAMES</small></div>
+          <div><p class="overline">ORIGINAL EXPERIENCES</p><h2>Games with ambition and identity.</h2><p>From mobile arcade action to large PC adventures, every title is being developed as an original Zeno experience.</p></div>
+        </div>
+        <div class="showcase-grid">
+          <article class="showcase-card featured reveal"><span class="status-chip status-build">IN DEVELOPMENT</span><div class="showcase-monogram">PE</div><h3>Zeno Picture Escape</h3><p>A 500-level Android picture-completion game across 25 worlds, with bosses, evolving challenges, power-ups and premium progression.</p><div class="tag-row"><span>Android</span><span>500 levels planned</span><span>Closed testing</span></div></article>
+          <article class="showcase-card reveal"><span class="status-chip status-concept">PROJECT CONCEPT</span><div class="showcase-monogram">ZA</div><h3>Zeno Adventure</h3><p>A large offline 3D action-adventure designed around 10 islands, 100 levels, exploration, treasure and tactical combat.</p><div class="tag-row"><span>3D</span><span>Adventure</span><span>Offline planned</span></div></article>
+          <article class="showcase-card reveal"><span class="status-chip status-concept">PC CONCEPT</span><div class="showcase-monogram">EP</div><h3>ZENO: Eclipse Protocol</h3><p>A 100-level tactical stealth and action campaign for PC with original locations, vehicles and multiple endings.</p><div class="tag-row"><span>PC</span><span>Stealth</span><span>Cinematic</span></div></article>
+          <article class="showcase-card reveal"><span class="status-chip status-concept">MULTI-PLATFORM CONCEPT</span><div class="showcase-monogram">WR</div><h3>Zeno World Racing</h3><p>One-on-one racing for Android and PC with long tracks, manual gears and varied vehicle classes.</p><div class="tag-row"><span>Racing</span><span>Android + PC</span><span>1v1</span></div></article>
+        </div>
+      </div>
+    </section>
 
-<section id="zenvy"><div class="wrap">
-<div class="section-head reveal"><span class="eyebrow">04 / ZENVY — NEXT STAGE</span><h2>The future Zeno marketplace.</h2><p>Zenvy will be developed as a separate international e-commerce brand inspired by large marketplace experiences, while keeping its own Zeno identity.</p></div>
-<div class="zenvy reveal"><div class="zenvy-inner">
-<div><span class="kicker">COMING SOON</span><h2 style="font-family:'Space Grotesk';font-size:46px;margin:18px 0 10px">Zenvy Marketplace</h2><p style="color:var(--muted);line-height:1.85;max-width:600px">Products • Sellers • Deals • Orders • Digital commerce • Mobile app. Follow the roadmap as the marketplace takes shape.</p><div class="hero-buttons"><a class="btn primary" href="#roadmap">View Roadmap →</a><a class="btn" href="#contact">Partner With Zeno</a></div></div>
-<div class="market-orb"></div>
-</div></div>
-</div></section>
+    <section class="section" id="software">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div class="heading-index"><span>05</span><small>SOFTWARE</small></div>
+          <div><p class="overline">WORK SMARTER</p><h2>Tools for documents, learning and business.</h2><p>Zeno software projects cover daily productivity, file conversion, professional learning and complete business operations.</p></div>
+        </div>
+        <div class="software-list">
+          <a class="software-row reveal" href="apps.html#office-apps"><span class="software-id">01</span><div><h3>Zeno Scan Pro</h3><p>Smart scanning, enhancement, PDF and office document tools.</p></div><span class="status-chip status-build">IN TESTING</span><b>→</b></a>
+          <a class="software-row reveal" href="apps.html#office-apps"><span class="software-id">02</span><div><h3>Zeno Convert Pro</h3><p>Universal conversion and media tools for Android and Windows.</p></div><span class="status-chip status-build">IN DEVELOPMENT</span><b>→</b></a>
+          <a class="software-row reveal" href="typing-academy.html"><span class="software-id">03</span><div><h3>Zeno Typing Academy</h3><p>English, Urdu, numeric keypad and professional typing education.</p></div><span class="status-chip status-build">WINDOWS PROJECT</span><b>→</b></a>
+          <a class="software-row reveal" href="apps.html#business-software"><span class="software-id">04</span><div><h3>Zen Tech ERP</h3><p>Accounting, inventory and multi-user workflows across 11 business editions.</p></div><span class="status-chip status-build">ACTIVE DEVELOPMENT</span><b>→</b></a>
+        </div>
+      </div>
+    </section>
 
-<section id="token"><div class="wrap">
-<div class="section-head reveal"><span class="eyebrow">05 / ZNO TOKEN</span><h2>Simple. Clear. Verifiable.</h2><p>Explore ZNO token details and view the contract on BNB Smart Chain.</p></div>
-<div class="token-box">
-<div class="rows reveal">
-<div class="row"><span>Token</span><strong>ZNO</strong></div><div class="row"><span>Network</span><strong>BNB Smart Chain</strong></div><div class="row"><span>Total Supply</span><strong>10,000,000,000 ZNO</strong></div><div class="row"><span>Supply</span><strong>Fixed / Non-Mintable</strong></div><div class="row"><span>Contract</span><strong>0x180B...EfB198</strong></div>
-</div>
-<div class="contract-box reveal"><h3 style="font-family:'Space Grotesk';font-size:25px">Official Smart Contract</h3><div class="contract" id="contract">0x180B860aa47e9280F32D9f949596c0b012Efb198</div><div class="hero-buttons"><button class="btn primary" id="copy">Copy Address</button><a class="btn" href="https://bscscan.com/address/0x180B860aa47e9280F32D9f949596c0b012Efb198" target="_blank" rel="noopener noreferrer">BscScan ↗</a></div><p id="copied" style="display:none;color:var(--green);font-weight:800">✓ Address copied</p></div>
-</div>
-</div></section>
+    <section class="section marketplace-section" id="zenvy">
+      <div class="shell marketplace-grid">
+        <div class="marketplace-copy reveal">
+          <span class="status-chip status-build">NEXT-GENERATION MARKETPLACE</span>
+          <p class="overline">ZENVY</p>
+          <h2>Commerce built for customers, sellers and growth.</h2>
+          <p>Zenvy is an international marketplace project with customer, seller and admin experiences—covering products, discovery, cart, orders, payments, reviews and multi-currency support.</p>
+          <div class="hero-actions"><a class="button button-primary" href="apps.html#development">View project details <span>→</span></a><a class="button button-secondary" href="#roadmap">See the roadmap</a></div>
+        </div>
+        <div class="marketplace-mark reveal" aria-hidden="true"><img src="zenvy-app-icon.png" alt="" width="220" height="220"><span>ZENVY</span><small>Marketplace in development</small></div>
+      </div>
+    </section>
 
-<section id="fiverr"><div class="wrap"><div class="freelance-feature glass reveal"><div><span class="eyebrow">FIVERR / FREELANCE WORK</span><h2>Have a project?<br>Let’s build it.</h2><p>I’m Ishfaq, the developer behind Zeno Network. My freelance work brings together Android development, business software, websites and creative digital services.</p><div class="hero-buttons"><a class="btn primary" href="#services">Explore my services →</a><a class="btn" href="apps.html">View app portfolio</a></div></div><div class="freelance-focus"><span class="tag">PROJECT PORTFOLIO</span><a href="apps.html"><strong>Android & mobile apps</strong><span>Zeno Vault · Zenvy · Zeno Scan Pro · Zeno Launcher</span></a><a href="#software"><strong>Business software</strong><span>Zen Tech ERP · accounting & stock workflows</span></a><a href="#services"><strong>Web & creative services</strong><span>Websites · logos · promotional videos</span></a></div></div></div></section>
-<section id="services"><div class="wrap">
-<div class="section-head reveal"><span class="eyebrow">06 / ZENO SERVICES</span><h2>Freelance services.<br>From idea to delivery.</h2><p>From a first idea to a finished product: Android development, websites and digital services for your business.</p></div>
-<div class="glass-grid service-grid">
-<div class="glass service reveal"><div class="icon">▣</div><h3>Android Development</h3><p>Modern Android apps, UI, Firebase, APIs and Play Store preparation.</p></div>
-<div class="glass service reveal"><div class="icon">⌁</div><h3>Bug Fixing</h3><p>Debugging, performance improvements and feature fixes.</p></div>
-<div class="glass service reveal"><div class="icon">◫</div><h3>Web & UI Design</h3><p>Responsive websites, landing pages and professional interfaces.</p></div>
-<div class="glass service reveal"><div class="icon">▶</div><h3>Video Editing</h3><p>Promotional, social and product videos.</p></div>
-<div class="glass service reveal"><div class="icon">◇</div><h3>E-commerce</h3><p>Store websites, marketplace concepts and shopping systems.</p></div>
-<div class="glass service reveal"><div class="icon">F</div><h3>Firebase & APIs</h3><p>Authentication, Firestore, Cloud Functions and integrations.</p></div>
-<div class="glass service reveal"><div class="icon">₿</div><h3>AdMob & Billing</h3><p>Rewarded ads, monetization and Google Play Billing integration.</p></div>
-<div class="glass service reveal"><div class="icon">✦</div><h3>Logo & Graphic Design</h3><p>Brand logos, app visuals, gig thumbnails and promotional graphics.</p></div>
-<div class="glass service reveal"><div class="icon">ZT</div><h3>ERP & Accounting</h3><p>Business software, voucher screens, inventory workflows and tailored interface improvements.</p></div>
-<div class="glass service reveal"><div class="icon">↗</div><h3>Play Store Support</h3><p>App listing assets, release preparation and publishing support.</p></div>
-<div class="glass service reveal"><div class="icon">⌘</div><h3>GitHub Support</h3><p>Repository setup, project updates and source control guidance.</p></div>
-<div class="glass service reveal"><div class="icon">▦</div><h3>Custom Launchers</h3><p>Android home-screen interfaces, folders, widgets and personalization work.</p></div>
-</div>
-</div></section>
+    <section class="section" id="token">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div class="heading-index"><span>06</span><small>ZNO TOKEN</small></div>
+          <div><p class="overline">CLEAR AND VERIFIABLE</p><h2>The utility layer of the Zeno ecosystem.</h2><p>View the official ZNO contract and core token information directly on BNB Smart Chain.</p></div>
+        </div>
+        <div class="token-grid">
+          <div class="token-facts reveal"><div><span>Token</span><strong>ZNO</strong></div><div><span>Network</span><strong>BNB Smart Chain</strong></div><div><span>Total supply</span><strong>10,000,000,000</strong></div><div><span>Supply model</span><strong>Fixed / Non-mintable</strong></div></div>
+          <div class="contract-panel reveal"><p class="overline">OFFICIAL CONTRACT</p><code id="contract-address">0x180B860aa47e9280F32D9f949596c0b012Efb198</code><div class="hero-actions"><button class="button button-primary" id="copy-contract" type="button">Copy address</button><a class="button button-secondary" href="https://bscscan.com/address/0x180B860aa47e9280F32D9f949596c0b012Efb198" target="_blank" rel="noopener noreferrer">Verify on BscScan ↗</a></div><p class="copy-status" id="copy-status" role="status" aria-live="polite"></p></div>
+        </div>
+      </div>
+    </section>
 
-<section id="roadmap"><div class="wrap">
-<div class="section-head reveal"><span class="eyebrow">07 / ROADMAP</span><h2>Build it step by step.</h2></div>
-<div class="roadmap">
-<div class="phase reveal"><small>PHASE 01</small><h3>Foundation</h3><p>Brand, official website, token infrastructure and community.</p></div>
-<div class="phase reveal"><small>PHASE 02</small><h3>Products</h3><p>Zeno Network, Zeno Vault and additional applications.</p></div>
-<div class="phase reveal"><small>PHASE 03</small><h3>Services</h3><p>Expand digital services, partnerships and client work.</p></div>
-<div class="phase reveal"><small>PHASE 04</small><h3>Zenvy</h3><p>Design and develop the marketplace web and mobile ecosystem.</p></div>
-</div>
-</div></section>
+    <section class="section section-tinted" id="services">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div class="heading-index"><span>07</span><small>FREELANCE</small></div>
+          <div><p class="overline">WORK WITH ISHFAQ</p><h2>From idea to a working digital product.</h2><p>Professional development and creative services backed by hands-on work across Zeno apps, software and websites.</p></div>
+        </div>
+        <div class="services-layout">
+          <div class="services-grid">
+            <article class="service-card reveal"><span>01</span><h3>Android Development</h3><p>Kotlin, Jetpack Compose, Firebase, APIs, payments and Play Store readiness.</p></article>
+            <article class="service-card reveal"><span>02</span><h3>Bug Fixing & Polish</h3><p>Build errors, crashes, UI repairs, performance improvements and release support.</p></article>
+            <article class="service-card reveal"><span>03</span><h3>Web & Business Software</h3><p>Responsive websites, ERP interfaces, inventory and accounting workflows.</p></article>
+            <article class="service-card reveal"><span>04</span><h3>Design & Promotion</h3><p>App graphics, Fiverr assets, logos and promotional video support.</p></article>
+          </div>
+          <aside class="fiverr-panel reveal"><span class="fiverr-wordmark">fiverr<span>.</span></span><p class="overline">AVAILABLE FOR PROJECTS</p><h3>M Ishfaq</h3><p>@mrishfaq</p><a class="button button-primary" href="https://www.fiverr.com/mrishfaq" target="_blank" rel="noopener noreferrer">View Fiverr profile <span>↗</span></a></aside>
+        </div>
+      </div>
+    </section>
 
-<section id="updates"><div class="wrap">
-<div class="section-head reveal"><span class="eyebrow">08 / UPDATES</span><h2>Latest from Zeno.</h2><p>Product milestones and the next steps for the Zeno ecosystem.</p></div>
-<div class="glass reveal">
-<div class="update"><div class="date">NOW</div><div><strong>Zeno ecosystem website</strong><p>A shared home for Zeno apps, digital services, ZNO and future commerce.</p></div></div>
-<div class="update"><div class="date">NEXT</div><div><strong>Zenvy planning</strong><p>Marketplace architecture, product categories, seller flow and mobile app planning.</p></div></div>
-<div class="update"><div class="date">ONGOING</div><div><strong>ZNO ecosystem</strong><p>Continue developing practical utility around Zeno products.</p></div></div>
-</div>
-</div></section>
+    <section class="section" id="roadmap">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div class="heading-index"><span>08</span><small>ROADMAP</small></div>
+          <div><p class="overline">BUILD. TEST. RELEASE. IMPROVE.</p><h2>A practical path forward.</h2><p>Products move through clear stages so released apps stay reliable while new ideas develop responsibly.</p></div>
+        </div>
+        <div class="roadmap-grid">
+          <article class="roadmap-card complete reveal"><span>01</span><small>LIVE</small><h3>Foundation</h3><p>Zeno brand, official website, ZNO contract and first Google Play products.</p></article>
+          <article class="roadmap-card active reveal"><span>02</span><small>ACTIVE</small><h3>Product Expansion</h3><p>Zeno Picture Escape, Zeno Scan Pro and new productivity tools.</p></article>
+          <article class="roadmap-card reveal"><span>03</span><small>NEXT</small><h3>Business & Learning</h3><p>Zen Tech ERP, Typing Academy and skills-focused learning products.</p></article>
+          <article class="roadmap-card reveal"><span>04</span><small>FUTURE</small><h3>Marketplace & Games</h3><p>Zenvy commerce and larger original Android and PC game experiences.</p></article>
+        </div>
+      </div>
+    </section>
 
-<section id="contact"><div class="wrap"><div class="cta reveal">
-<span class="eyebrow">09 / CONNECT</span><h2 class="connect-title" style="font-family:'Space Grotesk';margin:12px 0">Follow the official Zeno Network.</h2>
-<p style="color:var(--muted);line-height:1.8">Official announcements, product updates, partnerships and community information.</p>
-<div class="hero-buttons"><a class="btn primary" href="https://t.me/znonetwork" target="_blank" rel="noopener noreferrer">Telegram</a><a class="btn" href="https://x.com/ZenoNetworkZNO" target="_blank" rel="noopener noreferrer">X / Twitter</a><a class="btn" href="Whitepaper.pdf" target="_blank" rel="noopener noreferrer">Whitepaper</a></div>
-</div></div></section>
+    <section class="section contact-section" id="contact">
+      <div class="shell contact-panel reveal">
+        <div><p class="overline">LET’S CONNECT</p><h2>Follow the work.<br>Build the next project.</h2></div>
+        <div class="contact-actions"><a class="button button-primary" href="https://www.fiverr.com/mrishfaq" target="_blank" rel="noopener noreferrer">Start a Fiverr project ↗</a><a class="button button-secondary" href="https://t.me/znonetwork" target="_blank" rel="noopener noreferrer">Telegram ↗</a><a class="button button-secondary" href="https://x.com/ZenoNetworkZNO" target="_blank" rel="noopener noreferrer">X / Twitter ↗</a></div>
+      </div>
+    </section>
 
-<section><div class="wrap"><div class="glass"><h3>Disclaimer</h3><p>ZENO NETWORK (ZNO) is presented as a utility-focused digital ecosystem. Website information is informational only and is not financial, investment, legal or tax advice. Roadmap items may change during development.</p></div></div></section>
+    <section class="legal-note"><div class="shell"><p><strong>Information notice:</strong> ZENO NETWORK and ZNO are presented as a utility-focused digital ecosystem. Project plans can change during development. This website does not provide financial, investment, legal or tax advice.</p></div></section>
+  </main>
 
-</main>
-<footer><div class="wrap foot"><div><strong style="color:#fff;font-family:'Space Grotesk'">ZENO NETWORK</strong><br>ZNO • Apps • Games • Software • Services</div><div class="foot-links"><a href="#fiverr">Fiverr Work</a><a href="apps.html">Apps</a><a href="#zenvy">Zenvy</a><a href="#token">ZNO</a><a href="https://t.me/znonetwork" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://x.com/ZenoNetworkZNO" target="_blank" rel="noopener noreferrer">X</a></div><div>© 2026 ZENO NETWORK. All rights reserved.</div></div></footer>
-
-
-
-
-
-<script src="site.js?v=20260908" defer></script>
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand"><a class="brand" href="#top"><img src="zno.svg" alt="" width="42" height="42"><span>ZENO <strong>NETWORK</strong></span></a><p>Apps · Software · Games · Digital Services</p></div>
+      <div class="footer-links"><a href="apps.html">Apps</a><a href="#software">Software</a><a href="#games">Games</a><a href="#services">Services</a><a href="Whitepaper.pdf" target="_blank" rel="noopener noreferrer">Whitepaper</a></div>
+      <p class="copyright">© <span id="current-year">2026</span> Zeno Network. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
