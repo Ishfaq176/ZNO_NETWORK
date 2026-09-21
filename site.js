@@ -10,6 +10,7 @@
   const closeMenu = (returnFocus = false) => {
     if (!menuButton || !navigation) return;
     navigation.classList.remove("open");
+    doc.body.classList.remove("nav-open");
     menuButton.setAttribute("aria-expanded", "false");
     menuButton.setAttribute("aria-label", "Open navigation");
     if (returnFocus) menuButton.focus();
@@ -19,6 +20,7 @@
     menuButton.addEventListener("click", () => {
       const open = menuButton.getAttribute("aria-expanded") !== "true";
       navigation.classList.toggle("open", open);
+      doc.body.classList.toggle("nav-open", open);
       menuButton.setAttribute("aria-expanded", String(open));
       menuButton.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
     });
@@ -31,7 +33,7 @@
     doc.addEventListener("keydown", event => {
       if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") closeMenu(true);
     });
-    matchMedia("(min-width: 1121px)").addEventListener("change", closeMenu);
+    matchMedia("(min-width: 1121px)").addEventListener("change", () => closeMenu());
   }
 
   const updateScroll = () => {
