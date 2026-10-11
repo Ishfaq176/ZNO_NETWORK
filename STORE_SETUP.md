@@ -14,8 +14,15 @@ Receiving account: **HBL / MUHAMMAD ISHFAQ**, IBAN
 Owner privileges are determined by protected Cloud Functions, never by an email
 comparison in the page.
 
+GitHub Pages publication succeeded on 11 October 2026 for website implementation
+commit `dde2571c37a87025c4abda3ebf7ff6e18526300a` (run `38141078744`). Firebase
+already has Google as its only enabled provider; canonical `zenonetwork.xyz`
+was added and verified as an authorized domain. The separate `www` origin was
+not added and is not needed for the canonical website.
+
 Deploy the matching app repository's commerce functions, Firestore rules and
-indexes first. Authorize `zenonetwork.xyz` / `www.zenonetwork.xyz` for Google sign-in.
+indexes first. That live deployment is still pending; source/static publication
+does not activate checkout or license delivery.
 Sign in as **mr.ishfaq302@gmail.com** to bind the owner UID. Functions must also
 have the actual runtime service account's custom-token signing permission.
 See the app repository's current **CONSOLE_SETUP.md** for all commands.
