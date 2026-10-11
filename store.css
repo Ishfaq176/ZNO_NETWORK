@@ -1,0 +1,40 @@
+[hidden] { display: none !important; }
+.store-panel { background: #0e1722; border: 1px solid #263446; border-radius: 20px; padding: clamp(22px, 3vw, 32px); margin-top: 22px; }
+.store-panel h3 { font: 600 1.5rem/1.4 "Sora", sans-serif; margin: 8px 0 16px; }
+.store-panel h4 { font-size: 1.1rem; margin: 12px 0; }
+.store-panel p { line-height: 1.7; color: #bac5d2; }
+.store-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.account-bar, .store-actions { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.account-bar p { margin-bottom: 0; }
+.account-bar strong { overflow-wrap: anywhere; }
+.store-actions { justify-content: flex-start; }
+.store-panel .button { cursor: pointer; font: inherit; margin-top: 10px; }
+.store-panel .button:disabled, .button:disabled { opacity: .55; cursor: not-allowed; }
+.store-notice { padding: 18px 22px; background: #142031; border: 1px solid #344863; border-radius: 14px; line-height: 1.6; color: #dbe6f5; }
+.store-notice[data-kind="error"] { background: #281b22; border-color: #7a3648; color: #ffd2da; }
+.store-notice[data-kind="success"], .store-success { color: #9ee7bf; }
+.bank-details { display: grid; gap: 15px; margin: 24px 0; }
+.bank-details div { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 8px; }
+.bank-details dt { color: #a7b7c9; }
+.bank-details dd { margin: 0; color: #eef4fc; font-weight: 600; overflow-wrap: anywhere; }
+.copy-button { color: #f5c451; border: 1px solid #685936; border-radius: 7px; background: transparent; padding: 5px 9px; cursor: pointer; font: inherit; }
+.store-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 22px; }
+.store-form label, .order-card label { display: grid; gap: 9px; color: #d5e0ed; font-size: .92rem; }
+.store-panel input:not([type="checkbox"]), .store-panel select, .order-card textarea { width: 100%; min-height: 48px; border: 1px solid #40516a; border-radius: 10px; background: #080f19; color: #eef4fc; padding: 12px 14px; font: inherit; }
+.store-panel input::placeholder { color: #9baec6; }
+.store-check { display: flex !important; align-items: flex-start; gap: 12px !important; margin: 18px 0; line-height: 1.6; }
+.store-check input { margin-top: 5px; width: 18px; height: 18px; flex: 0 0 auto; accent-color: #f5c451; }
+.store-wide { grid-column: 1 / -1; }
+.store-panel hr { border: 0; border-top: 1px solid #2b394a; margin: 32px 0; }
+.pairing-panel { border-color: #8d703c; }
+.pairing-code { display: block; font: 700 clamp(2rem, 7vw, 3.1rem)/1.4 "Sora", sans-serif; letter-spacing: .15em; color: #f5c451; margin: 20px 0; }
+.order-list { display: grid; gap: 18px; margin-top: 20px; }
+.order-card { padding: 22px; border: 1px solid #354761; border-radius: 14px; background: #0b131e; }
+.order-card h4 { overflow-wrap: anywhere; }
+.order-card .order-meta { color: #c5d1e0; overflow-wrap: anywhere; }
+.order-card .order-status { color: #f5c451; text-transform: capitalize; }
+.order-card form { margin-top: 18px; }
+.order-card textarea { resize: vertical; }
+.store-panel summary { cursor: pointer; color: #b8c9de; font-weight: 600; }
+.store-panel :focus-visible { outline: 3px solid #f5c451; outline-offset: 4px; }
+@media (max-width: 760px) { .store-grid, .store-form { grid-template-columns: 1fr; } .bank-details div { grid-template-columns: 1fr; gap: 4px; } .account-bar { align-items: flex-start; } .store-wide { grid-column: auto; } .store-actions .button { flex: 1 1 auto; } }

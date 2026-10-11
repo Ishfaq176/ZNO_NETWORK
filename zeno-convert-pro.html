@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20260921-fullscreen">
   <script src="site.js?v=20260921-gold" defer></script>
+  <link rel="stylesheet" href="store.css?v=20261011">
+  <script type="module" src="store.js?v=20261011"></script>
   <style>
     .convert-pricing{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:30px}
     .convert-price{font:700 clamp(1.8rem,4vw,3rem)/1 "Sora",sans-serif;color:#f5c451;margin:12px 0}
@@ -31,6 +33,7 @@
         <a href="apps.html">Apps</a>
         <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
+        <a href="#account">My account</a>
         <a href="zeno-convert-pro-privacy.html">Privacy</a>
         <a class="nav-cta" href="index.html">Main website <span>→</span></a>
       </nav>
@@ -52,7 +55,7 @@
           </div>
         </div>
         <div class="directory-panel reveal">
-          <div><small>WINDOWS</small><strong>Full Premium</strong></div>
+          <div><small>WINDOWS</small><strong>Lifetime Premium</strong></div>
           <div><small>ANDROID FREE</small><strong>5 exports</strong></div>
           <div><small>PREMIUM</small><strong>No ads · Unlimited</strong></div>
         </div>
@@ -91,18 +94,17 @@
               <li>Batch media and document tools</li>
               <li>Windows EXE / installer delivery</li>
             </ul>
-            <a class="button button-primary" href="https://t.me/znonetwork" target="_blank" rel="noopener noreferrer">Buy Windows Premium <span>↗</span></a>
-            <p class="convert-note">Direct checkout/payment automation can be connected later. Until then, purchase confirmation and delivery are handled through the official Zeno Network contact.</p>
+            <a class="button button-primary" href="#account">Buy Windows Premium <span>↓</span></a>
+            <p class="convert-note">Sign in with Gmail, create your order and pay by HBL bank transfer. Your lifetime license activates after the payment is verified in our bank account.</p>
           </article>
 
           <article class="premium-card reveal">
             <span class="status-chip status-build">ANDROID · GOOGLE PLAY</span>
             <h3>Zeno Convert Pro for Android</h3>
-            <div class="convert-price">5 free <small>successful exports per installation</small></div>
+            <div class="convert-price">PKR 9,899 <small>one-time / lifetime Premium</small></div>
             <ul class="convert-list">
-              <li>Monthly Premium: PKR 499 target price</li>
-              <li>Yearly Premium: PKR 3,999 target price</li>
-              <li>Lifetime Premium: PKR 7,999 target price</li>
+              <li>5 successful exports free per installation</li>
+              <li>One lifetime Premium purchase through Google Play</li>
               <li>Premium, Family Premium and Admin are unlimited</li>
               <li>Premium accounts are ad-free</li>
             </ul>
@@ -113,10 +115,76 @@
       </div>
     </section>
 
+    <section class="section" id="account" aria-labelledby="account-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="heading-index"><span>03</span><small>YOUR ACCOUNT</small></div>
+          <div><p class="overline">WINDOWS LIFETIME · PKR 9,999</p><h2 id="account-title">Buy once. Sign in. Start creating.</h2><p>Use the same Google Gmail account here and in your Windows app. Android purchases are handled separately through Google Play.</p></div>
+        </div>
+        <noscript><p class="store-notice">Enable JavaScript to sign in and manage a purchase. Please do not transfer payment until an order has been created.</p></noscript>
+        <div id="store-message" class="store-notice" role="status" aria-live="polite">Connecting to the secure store. Please do not transfer payment until your order is created.</div>
+        <div class="store-panel account-bar">
+          <div><strong id="account-name">Sign in with your Gmail account</strong><p id="account-detail" class="convert-note">Google sign-in is required for purchase, download and license activation.</p></div>
+          <div class="store-actions"><button id="google-sign-in" class="button button-primary" type="button" disabled>Continue with Google</button><button id="account-refresh" class="button button-secondary" type="button" hidden>Refresh</button><button id="google-sign-out" class="button button-secondary" type="button" hidden>Sign out</button></div>
+        </div>
+        <div id="desktop-pairing" class="store-panel pairing-panel" hidden>
+          <p class="overline">CONNECT YOUR WINDOWS APP</p><h3>Check the code on your computer</h3>
+          <p>Approve only if you just started sign-in in Zeno Convert Pro and the app shows this same code.</p>
+          <strong id="pairing-code" class="pairing-code"></strong>
+          <label class="store-check"><input id="pairing-confirm" type="checkbox"> This code matches my Windows app.</label>
+          <button id="pairing-approve" class="button button-primary" type="button" disabled>Approve this computer</button>
+          <p id="pairing-status" class="convert-note" role="status" aria-live="polite">Sign in with Google to continue.</p>
+        </div>
+        <div class="store-grid">
+          <article class="store-panel" aria-labelledby="checkout-title">
+            <p class="overline">1 · CREATE YOUR ORDER</p><h3 id="checkout-title">Windows Premium for life</h3>
+            <div class="convert-price">PKR 9,999 <small>one payment</small></div>
+            <p>Your purchase includes unlimited Windows exports and no ads. Account activation is required. An internet connection renews your secure offline license every 30 days.</p>
+            <button id="create-order" class="button button-primary" type="button" disabled>Create Windows order</button>
+            <p id="checkout-availability" class="convert-note">Sales open when the verified Windows installer is ready.</p>
+            <div id="approved-download" hidden><p class="store-success">Windows Premium is active on your account.</p><button id="download-windows" class="button button-primary" type="button">Get Windows installer</button><p class="convert-note">Open Profile in the installed app, continue with Google and approve the matching computer code.</p></div>
+          </article>
+          <article class="store-panel" aria-labelledby="bank-title">
+            <p class="overline">2 · BANK TRANSFER AFTER ORDER</p><h3 id="bank-title">Official receiving account</h3>
+            <dl class="bank-details">
+              <div><dt>Bank</dt><dd id="bank-name">HBL</dd></div>
+              <div><dt>Account title</dt><dd id="bank-title-value">MUHAMMAD ISHFAQ</dd></div>
+              <div><dt>IBAN</dt><dd><span id="bank-iban">PK56HABB0008477902771003</span> <button id="copy-iban" type="button" class="copy-button" aria-label="Copy IBAN">Copy</button></dd></div>
+              <div><dt>Account number</dt><dd id="bank-account">08477902771003</dd></div>
+              <div id="bank-raast-row" hidden><dt>Raast ID</dt><dd id="bank-raast"></dd></div>
+              <div><dt>Amount</dt><dd>PKR 9,999</dd></div>
+            </dl>
+            <p class="convert-note">Use your bank app to send to the IBAN and confirm that the receiving title matches MUHAMMAD ISHFAQ. Submit the actual transaction reference in your order below. Activation follows manual bank verification.</p>
+          </article>
+        </div>
+        <div id="my-orders-panel" class="store-panel" hidden><p class="overline">3 · TRACK YOUR PURCHASE</p><h3>Your orders</h3><p class="convert-note">A transaction reference records your payment claim. The owner confirms the actual bank credit before approving your lifetime license.</p><div id="my-orders" class="order-list"></div></div>
+        <details id="delete-account-panel" class="store-panel" hidden><summary>Delete my Zeno account</summary><p>This removes your sign-in profile and active app access. Local files on your device stay on the device. Payment and purchase verification records may be retained for accounting and fraud prevention. Deleting an account does not request a refund.</p><label class="store-check"><input id="delete-confirm" type="checkbox"> I understand that my account access will be removed.</label><button id="delete-account" type="button" class="button button-secondary">Verify with Google and delete account</button><p><a href="zeno-convert-pro-privacy.html#account-deletion">Read the deletion policy</a></p></details>
+        <section id="owner-panel" class="store-panel owner-panel" aria-labelledby="owner-title" hidden>
+          <p class="overline">OWNER CONTROLS</p><h3 id="owner-title">Store and family access</h3><p class="convert-note">Owner actions are verified by the server for your Google account.</p>
+          <form id="store-settings-form" class="store-form">
+            <label>Bank name<input name="bankName" required maxlength="100" value="HBL"></label>
+            <label>Account title<input name="accountTitle" required maxlength="120" value="MUHAMMAD ISHFAQ"></label>
+            <label>Pakistan IBAN<input name="iban" required maxlength="34" value="PK56HABB0008477902771003" spellcheck="false"></label>
+            <label>Account number<input name="accountNumber" maxlength="32" value="08477902771003" spellcheck="false"></label>
+            <label>Raast mobile ID (optional)<input name="raastId" maxlength="16" placeholder="Only if linked in your bank"></label>
+            <label>Verified Windows installer HTTPS URL<input name="downloadUrl" type="url" placeholder="https://..." required></label>
+            <label class="store-check store-wide"><input name="enabled" type="checkbox"> Open Windows sales after testing the installer and activation.</label>
+            <button class="button button-primary" type="submit">Save store settings</button>
+          </form>
+          <hr><h4>Family Premium</h4><form id="family-form" class="store-form">
+            <label>Family member Gmail<input name="email" type="email" required placeholder="member@gmail.com" autocomplete="off"></label>
+            <label>Access duration<select name="days"><option value="">Lifetime</option><option value="30">30 days</option><option value="365">1 year</option></select></label>
+            <div class="store-actions store-wide"><button class="button button-primary" type="submit">Grant family access</button><button id="revoke-family" class="button button-secondary" type="button">Revoke family access</button></div>
+          </form><p class="convert-note">The member must first sign in with Google. A family grant covers Android and Windows. Revoking family access preserves separately purchased Premium. Windows offline family access renews within 7 days.</p>
+          <hr><div class="account-bar"><h4>Bank payment review</h4><button id="owner-orders-refresh" class="button button-secondary" type="button">Refresh orders</button></div><div id="owner-orders" class="order-list"></div>
+        </section>
+      </div>
+    </section>
+
     <section class="section contact-section">
       <div class="shell contact-panel reveal">
         <div><p class="overline">OFFICIAL PRODUCT</p><h2>Zeno Convert Pro<br>by Zeno Network Labs.</h2></div>
-        <div class="contact-actions"><a class="button button-primary" href="https://t.me/znonetwork" target="_blank" rel="noopener noreferrer">Purchase / support ↗</a><a class="button button-secondary" href="index.html">Back to Zeno Network</a></div>
+        <div class="contact-actions"><a class="button button-primary" href="https://t.me/znonetwork" target="_blank" rel="noopener noreferrer">Support ↗</a><a class="button button-secondary" href="index.html">Back to Zeno Network</a></div>
       </div>
     </section>
   </main>
@@ -124,7 +192,8 @@
   <footer class="site-footer">
     <div class="shell footer-grid">
       <div class="footer-brand"><a class="brand" href="index.html"><img src="zno.svg" alt="" width="42" height="42"><span>ZENO <strong>NETWORK</strong></span></a><p>Apps · Software · Games · Digital Services</p></div>
-      <div class="footer-links"><a href="apps.html">Apps</a><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="zeno-convert-pro-privacy.html">Privacy Policy</a><a href="index.html">Main website</a></div>
+      <div class="footer-links"><a href="apps.html">Apps</a><a href="#features">Features</a><a href="#pricing">Pricing</a>
+        <a href="#account">My account</a><a href="zeno-convert-pro-privacy.html">Privacy Policy</a><a href="index.html">Main website</a></div>
       <p class="copyright">© <span id="current-year">2026</span> Zeno Network. All rights reserved.</p>
     </div>
   </footer>
