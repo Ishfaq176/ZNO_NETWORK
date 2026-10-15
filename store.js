@@ -37,6 +37,13 @@ const element = (tag, content, className) => {
   return node;
 };
 const priceText = amount => `PKR ${Number(amount ?? 9899).toLocaleString('en-PK')}`;
+const openInstaller = value => {
+  let url;
+  try { url = new URL(value); }
+  catch { throw new Error('The installer link is not valid. Please contact Zeno Network.'); }
+  if (url.protocol !== 'https:' || url.username || url.password || !['zenonetwork.xyz', 'www.zenonetwork.xyz', 'github.com', 'storage.googleapis.com', 'firebasestorage.googleapis.com'].includes(url.hostname)) throw new Error('The installer link is not valid. Please contact Zeno Network.');
+  location.assign(url.href);
+};
 const randomRequestId = () => [...crypto.getRandomValues(new Uint8Array(24))].map(byte => byte.toString(16).padStart(2, '0')).join('');
 const createButton = (label, callback, primary = false) => {
   const button = element('button', label, `button button-${primary ? 'primary' : 'secondary'}`);
@@ -48,6 +55,11 @@ function render() {
   const signedIn = Boolean(state.user && state.account);
   const ready = state.configuration?.ready === true;
   const premium = signedIn && state.account.windows?.premium === true;
+  const trialReady = ready && Boolean(state.configuration?.trialDownloadUrl);
+  $('download-windows-trial').disabled = !trialReady || state.busy;
+  $('trial-download-availability').textContent = trialReady
+    ? '5 successful Windows exports free across all tools. No Google sign-in needed to try local exports.'
+    : 'The verified Windows trial download is being prepared. Please check back soon.';
   $('new-purchase-price').textContent = priceText(state.configuration?.pricePkr);
   const owner = signedIn && state.account.isAdmin === true;
   $('google-sign-in').hidden = signedIn;
@@ -229,9 +241,14 @@ $('create-order').addEventListener('click', () => action(async () => {
 }));
 $('download-windows').addEventListener('click', () => action(async () => {
   const result = await call('getWindowsDownload');
-  const url = new URL(result.url);
-  if (url.protocol !== 'https:' || url.username || url.password || !['zenonetwork.xyz', 'www.zenonetwork.xyz', 'github.com', 'storage.googleapis.com', 'firebasestorage.googleapis.com'].includes(url.hostname)) throw new Error('The installer link is not valid. Please contact Zeno Network.');
-  location.assign(url.href);
+  openInstaller(result.url);
+}));
+$('download-windows-trial').addEventListener('click', () => action(async () => {
+  state.configuration = await call('getStoreConfiguration');
+  if (state.configuration.ready !== true || !state.configuration.trialDownloadUrl) {
+    throw new Error('The verified Windows trial download is being prepared. Please check back soon.');
+  }
+  openInstaller(state.configuration.trialDownloadUrl);
 }));
 $('copy-iban').addEventListener('click', () => action(async () => {
   await navigator.clipboard.writeText($('bank-iban').textContent); message('HBL IBAN copied.', 'success');

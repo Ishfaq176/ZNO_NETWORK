@@ -29,7 +29,8 @@ function fixture() {
     createElement: tag => new Element(tag), createTextNode: text => ({textContent: text}),
     querySelectorAll: () => [],
   };
-  const context = vm.createContext({document, URL, location: {href: 'https://zenonetwork.xyz/zeno-convert-pro.html'}, console, crypto: globalThis.crypto});
+  const downloads = [];
+  const context = vm.createContext({document, URL, location: {href: 'https://zenonetwork.xyz/zeno-convert-pro.html', assign: url => downloads.push(url)}, console, crypto: globalThis.crypto});
   let source = readFileSync(new URL('../store.js', import.meta.url), 'utf8');
   assert.ok(source.includes("import {firebaseConfig, functionsRegion} from './store-config.js';"));
   source = source.replace(/^import[^\n]+\n/, 'const firebaseConfig = {}; const functionsRegion = "test";\n')
@@ -43,7 +44,7 @@ function fixture() {
   api.state.user = {uid: 'customer', email: 'customer@gmail.com'};
   api.state.account = {windows: {premium: false}, isAdmin: false};
   api.state.configuration = {ready: true, pricePkr: 9899};
-  return {...api, nodes, calls, handle: callback => { handler = callback; }};
+  return {...api, nodes, calls, downloads, handle: callback => { handler = callback; }};
 }
 const descendants = element => [element, ...(element.children ?? []).flatMap(descendants)];
 
@@ -60,6 +61,36 @@ test('closed sales never permit an unpaid order and the displayed new price is 9
   assert.equal(f.nodes.get('create-order').disabled, true);
   assert.match(f.nodes.get('new-purchase-price').textContent, /9,899/);
   assert.match(f.nodes.get('checkout-availability').textContent, /do not transfer payment/i);
+});
+
+test('trial download is available without Google only after the backend publishes a ready link', async () => {
+  const f = fixture(); f.state.user = null; f.state.account = null;
+  f.render();
+  assert.equal(f.nodes.get('download-windows-trial').disabled, true);
+  f.state.configuration.trialDownloadUrl = 'https://zenonetwork.xyz/downloads/zeno.zip';
+  f.handle(() => f.state.configuration);
+  f.render();
+  assert.equal(f.nodes.get('download-windows-trial').disabled, false);
+  assert.equal(f.nodes.get('create-order').disabled, true);
+  await f.nodes.get('download-windows-trial').events.click();
+  assert.deepEqual(f.downloads, ['https://zenonetwork.xyz/downloads/zeno.zip']);
+  assert.deepEqual(f.calls.map(call => call.name), ['getStoreConfiguration']);
+  assert.equal(f.state.account, null);
+});
+
+test('closed or unsafe trial links cannot navigate or grant Premium', async () => {
+  for (const configuration of [
+    {ready: false, trialDownloadUrl: 'https://zenonetwork.xyz/downloads/zeno.zip'},
+    {ready: true, trialDownloadUrl: 'javascript:alert(1)'},
+    {ready: true, trialDownloadUrl: 'https://evil.example/zeno.zip'},
+    {ready: true, trialDownloadUrl: 'https://user:secret@zenonetwork.xyz/zeno.zip'},
+  ]) {
+    const f = fixture(); f.handle(() => configuration);
+    await f.nodes.get('download-windows-trial').events.click();
+    assert.equal(f.downloads.length, 0);
+    assert.equal(f.state.account.windows.premium, false);
+    assert.ok(f.nodes.get('store-message').textContent);
+  }
 });
 
 test('stale order responses cannot reveal the previous Gmail account after an account change', async () => {

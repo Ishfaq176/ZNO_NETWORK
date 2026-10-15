@@ -11,10 +11,9 @@ existing Android Play product and secure account checks. The Android client
 observes the same server-owned entitlements; no new Android AAB is required just
 for this shared access change. Do not redeploy older split-purchase modules.
 
-At the pre-update live probe, the account endpoint rejected unauthenticated
-requests correctly, but store configuration and desktop pairing returned 404.
-Source/website publication does not deploy those missing services. Real Google
-browser approval also needs the deployed runtime's custom-token signer permission.
+The owner has deployed the shared services successfully. Real Google browser
+approval and customer purchase/activation still need account tests. Browser
+approval needs the deployed runtime's custom-token signer permission.
 
 Owner status requires the server-bound Google UID plus verified owner email.
 Owner and Family Premium apply to both platforms. Revocation preserves a separate
@@ -23,8 +22,19 @@ see the Windows repository's `services/README.md` for setup and offline limits.
 
 Keep sales closed until the complete Windows ZIP/installer is tested and a real
 public HTTPS download is configured in Owner controls. Do not link to a private
-source-repository release. The client requests download access through the
-backend; installers still require account activation before exports.
+source-repository release. The same complete Windows ZIP includes **5 successful
+free exports total** on the Windows user profile, then requires verified
+Premium for further exports. Trial exports need no Google sign-in; failed or
+canceled operations do not count. Restarting or changing Gmail does not reset
+the local protected count.
+
+Deploy the updated `getStoreConfiguration` from the Windows `services/` source.
+When the tested download/store is enabled, its public `trialDownloadUrl` enables
+the website's free Windows download button without account sign-in. It stays
+disabled while the download/store is not ready. Downloading the app never
+creates a Premium entitlement. Premium download and activation keep their
+existing Google/paid/family/owner checks. Do not publish the earlier 1.2.4+7 ZIP
+as the free trial: package version 1.2.5+8 after running the native checks.
 
 Customers must create an order before a bank transfer. Approve only after
 checking the actual bank credit and the exact amount of that order. Customer
