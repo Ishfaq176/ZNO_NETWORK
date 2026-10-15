@@ -11,8 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20260921-fullscreen">
   <script src="site.js?v=20260921-gold" defer></script>
-  <link rel="stylesheet" href="store.css?v=20261011">
-  <script type="module" src="store.js?v=20261011"></script>
+  <link rel="stylesheet" href="store.css?v=20261015">
+  <script type="module" src="store.js?v=20261015"></script>
   <style>
     .convert-pricing{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:30px}
     .convert-price{font:700 clamp(1.8rem,4vw,3rem)/1 "Sora",sans-serif;color:#f5c451;margin:12px 0}
@@ -80,22 +80,22 @@
       <div class="shell">
         <div class="section-heading reveal">
           <div class="heading-index"><span>02</span><small>PRICING</small></div>
-          <div><p class="overline">SIMPLE COMMERCIAL MODEL</p><h2>Choose Android or full Windows Premium.</h2><p>Windows is sold directly by Zeno Network. Android Premium is purchased through Google Play so billing and restore are handled through the Play account.</p></div>
+          <div><p class="overline">SIMPLE COMMERCIAL MODEL</p><h2>One Premium. Android and Windows.</h2><p>Buy once through Google Play or the Zeno Network website. Sign in with the same verified Gmail to use Premium on Android and Windows. Your purchase must be verified before access activates.</p></div>
         </div>
 
         <div class="convert-pricing">
           <article class="premium-card reveal">
             <span class="status-chip status-build">WINDOWS · DIRECT SALE</span>
-            <h3>Zeno Convert Pro Premium for Windows</h3>
-            <div class="convert-price">PKR 9,999 <small>one-time / lifetime</small></div>
+            <h3>Lifetime Premium for Android + Windows</h3>
+            <div class="convert-price">PKR 9,899 <small>one-time / lifetime</small></div>
             <ul class="convert-list">
-              <li>Full Premium desktop edition</li>
+              <li>One verified purchase covers Android and Windows</li>
               <li>No ads and no five-export limit</li>
               <li>Batch media and document tools</li>
               <li>Windows EXE / installer delivery</li>
             </ul>
-            <a class="button button-primary" href="#account">Buy Windows Premium <span>↓</span></a>
-            <p class="convert-note">Sign in with Gmail, create your order and pay by HBL bank transfer. Your lifetime license activates after the payment is verified in our bank account.</p>
+            <a class="button button-primary" href="#account">Buy lifetime Premium <span>↓</span></a>
+            <p class="convert-note">Sign in with Gmail, create your order and pay by HBL bank transfer. Your lifetime Premium activates on Android and Windows after the payment is verified in our bank account.</p>
           </article>
 
           <article class="premium-card reveal">
@@ -104,12 +104,12 @@
             <div class="convert-price">PKR 9,899 <small>one-time / lifetime Premium</small></div>
             <ul class="convert-list">
               <li>5 successful exports free per installation</li>
-              <li>One lifetime Premium purchase through Google Play</li>
+              <li>Verified Google Play Premium also unlocks Windows</li>
               <li>Premium, Family Premium and Admin are unlimited</li>
               <li>Premium accounts are ad-free</li>
             </ul>
             <a class="button button-primary" href="https://play.google.com/store/apps/developer?id=Zeno+Network+Labs" target="_blank" rel="noopener noreferrer">Zeno Network Labs on Google Play <span>↗</span></a>
-            <p class="convert-note">Google Play Console controls the final localized prices shown to customers. The app reads those live Play prices automatically.</p>
+            <p class="convert-note">Use the same Gmail inside the Android app and on Windows. Restore Purchases on Android if your purchase has not synced yet. Google Play shows the final localized price before purchase.</p>
           </article>
         </div>
       </div>
@@ -119,7 +119,7 @@
       <div class="shell">
         <div class="section-heading">
           <div class="heading-index"><span>03</span><small>YOUR ACCOUNT</small></div>
-          <div><p class="overline">WINDOWS LIFETIME · PKR 9,999</p><h2 id="account-title">Buy once. Sign in. Start creating.</h2><p>Use the same Google Gmail account here and in your Windows app. Android purchases are handled separately through Google Play.</p></div>
+          <div><p class="overline">WINDOWS LIFETIME · PKR 9,899</p><h2 id="account-title">Buy once. Sign in. Start creating.</h2><p>Use the same Google Gmail account in the Android app, this website and Windows. If you already bought Android Premium, refresh your account here; no second purchase is needed.</p></div>
         </div>
         <noscript><p class="store-notice">Enable JavaScript to sign in and manage a purchase. Please do not transfer payment until an order has been created.</p></noscript>
         <div id="store-message" class="store-notice" role="status" aria-live="polite">Connecting to the secure store. Please do not transfer payment until your order is created.</div>
@@ -137,12 +137,12 @@
         </div>
         <div class="store-grid">
           <article class="store-panel" aria-labelledby="checkout-title">
-            <p class="overline">1 · CREATE YOUR ORDER</p><h3 id="checkout-title">Windows Premium for life</h3>
-            <div class="convert-price">PKR 9,999 <small>one payment</small></div>
-            <p>Your purchase includes unlimited Windows exports and no ads. Account activation is required. An internet connection renews your secure offline license every 30 days.</p>
+            <p class="overline">1 · CREATE YOUR ORDER</p><h3 id="checkout-title">One lifetime Premium for both platforms</h3>
+            <div class="convert-price"><span id="new-purchase-price">PKR 9,899</span> <small>one payment</small></div>
+            <p>Your purchase includes unlimited Premium exports on Android and Windows, with no ads. Account activation is required. An internet connection renews your secure offline license every 30 days.</p>
             <button id="create-order" class="button button-primary" type="button" disabled>Create Windows order</button>
             <p id="checkout-availability" class="convert-note">Sales open when the verified Windows installer is ready.</p>
-            <div id="approved-download" hidden><p class="store-success">Windows Premium is active on your account.</p><button id="download-windows" class="button button-primary" type="button">Get Windows installer</button><p class="convert-note">Open Profile in the installed app, continue with Google and approve the matching computer code.</p></div>
+            <div id="approved-download" hidden><p class="store-success">Premium is active for Android and Windows on this Gmail.</p><button id="download-windows" class="button button-primary" type="button">Get Windows installer</button><p class="convert-note">Open Profile in the installed app, continue with Google and approve the matching computer code.</p></div>
           </article>
           <article class="store-panel" aria-labelledby="bank-title">
             <p class="overline">2 · BANK TRANSFER AFTER ORDER</p><h3 id="bank-title">Official receiving account</h3>
@@ -152,12 +152,12 @@
               <div><dt>IBAN</dt><dd><span id="bank-iban">PK56HABB0008477902771003</span> <button id="copy-iban" type="button" class="copy-button" aria-label="Copy IBAN">Copy</button></dd></div>
               <div><dt>Account number</dt><dd id="bank-account">08477902771003</dd></div>
               <div id="bank-raast-row" hidden><dt>Raast ID</dt><dd id="bank-raast"></dd></div>
-              <div><dt>Amount</dt><dd>PKR 9,999</dd></div>
+              <div><dt>New order price</dt><dd>PKR 9,899</dd></div>
             </dl>
             <p class="convert-note">Use your bank app to send to the IBAN and confirm that the receiving title matches MUHAMMAD ISHFAQ. Submit the actual transaction reference in your order below. Activation follows manual bank verification.</p>
           </article>
         </div>
-        <div id="my-orders-panel" class="store-panel" hidden><p class="overline">3 · TRACK YOUR PURCHASE</p><h3>Your orders</h3><p class="convert-note">A transaction reference records your payment claim. The owner confirms the actual bank credit before approving your lifetime license.</p><div id="my-orders" class="order-list"></div></div>
+        <div id="my-orders-panel" class="store-panel" hidden><p class="overline">3 · TRACK YOUR PURCHASE</p><h3>Your orders</h3><p class="convert-note">Pay the exact amount shown on your own order, including older orders. A transaction reference records your payment claim. The owner confirms the actual bank credit before approving your lifetime license.</p><div id="my-orders" class="order-list"></div></div>
         <details id="delete-account-panel" class="store-panel" hidden><summary>Delete my Zeno account</summary><p>This removes your sign-in profile and active app access. Local files on your device stay on the device. Payment and purchase verification records may be retained for accounting and fraud prevention. Deleting an account does not request a refund.</p><label class="store-check"><input id="delete-confirm" type="checkbox"> I understand that my account access will be removed.</label><button id="delete-account" type="button" class="button button-secondary">Verify with Google and delete account</button><p><a href="zeno-convert-pro-privacy.html#account-deletion">Read the deletion policy</a></p></details>
         <section id="owner-panel" class="store-panel owner-panel" aria-labelledby="owner-title" hidden>
           <p class="overline">OWNER CONTROLS</p><h3 id="owner-title">Store and family access</h3><p class="convert-note">Owner actions are verified by the server for your Google account.</p>
@@ -199,3 +199,4 @@
   </footer>
 </body>
 </html>
+

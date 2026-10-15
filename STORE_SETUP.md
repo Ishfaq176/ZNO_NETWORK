@@ -1,43 +1,39 @@
-# Zeno Convert Pro website store
+# Zeno Convert Pro shared lifetime store
 
-The existing GitHub Pages product page now supports Google Gmail sign-in,
-Windows lifetime orders at **PKR 9,999**, HBL bank transfer reference submission,
-owner bank-credit review, account access/download, family controls, fresh-Google
-account deletion and Windows computer-code approval. Android lifetime marketing
-price is **PKR 9,899**, purchased separately through Google Play.
+New lifetime website orders cost **PKR 9,899**. One verified purchase through
+Google Play or this website unlocks Android and Windows for the same verified
+Gmail/Firebase identity. Existing PKR 9,999 orders keep their original amount.
+The bank recipient and public Firebase configuration are unchanged.
 
-Receiving account: **HBL / MUHAMMAD ISHFAQ**, IBAN
-`PK56HABB0008477902771003`, account `08477902771003`.
+Deploy the shared backend from the Windows repository's `services/` directory
+using `scripts/DEPLOY_WINDOWS_SERVICES.ps1 -Deploy`. That source preserves the
+existing Android Play product and secure account checks. The Android client
+observes the same server-owned entitlements; no new Android AAB is required just
+for this shared access change. Do not redeploy older split-purchase modules.
 
-`store-config.js` contains public Firebase Auth configuration for the existing
-`zeno-convert-pro` project. It contains no service-account key or bank credentials.
-Owner privileges are determined by protected Cloud Functions, never by an email
-comparison in the page.
+At the pre-update live probe, the account endpoint rejected unauthenticated
+requests correctly, but store configuration and desktop pairing returned 404.
+Source/website publication does not deploy those missing services. Real Google
+browser approval also needs the deployed runtime's custom-token signer permission.
 
-GitHub Pages publication succeeded on 11 October 2026 for website implementation
-commit `dde2571c37a87025c4abda3ebf7ff6e18526300a` (run `38141078744`). Firebase
-already has Google as its only enabled provider; canonical `zenonetwork.xyz`
-was added and verified as an authorized domain. The separate `www` origin was
-not added and is not needed for the canonical website.
+Owner status requires the server-bound Google UID plus verified owner email.
+Owner and Family Premium apply to both platforms. Revocation preserves a separate
+paid purchase. Verify Google Play refunds with real-time developer notifications;
+see the Windows repository's `services/README.md` for setup and offline limits.
 
-Deploy the matching app repository's commerce functions, Firestore rules and
-indexes first. That live deployment is still pending; source/static publication
-does not activate checkout or license delivery.
-Sign in as **mr.ishfaq302@gmail.com** to bind the owner UID. Functions must also
-have the actual runtime service account's custom-token signing permission.
-See the app repository's current **CONSOLE_SETUP.md** for all commands.
+Keep sales closed until the complete Windows ZIP/installer is tested and a real
+public HTTPS download is configured in Owner controls. Do not link to a private
+source-repository release. The client requests download access through the
+backend; installers still require account activation before exports.
 
-Sales stay closed until the owner supplies a tested, publicly downloadable HTTPS
-Windows installer URL in the website's Owner controls and enables sales. Keep
-the EXE with its DLLs and data folder; distribute the complete ZIP/installer.
-A private GitHub release link does not work for ordinary customers.
+Customers must create an order before a bank transfer. Approve only after
+checking the actual bank credit and the exact amount of that order. Customer
+references never grant access on their own; bank-credit reuse is rejected.
+Never store banking logins, PINs, OTPs, private Firebase keys or signing keys in
+this website. A Google Play purchase already verified for this Gmail must not
+be sold again as a second Windows purchase.
 
-Before approving an order, verify the actual HBL credit of exactly 9,999 in your
-bank account. Enter the unique real bank-credit reference; the server prevents
-reuse of the same credit. A customer's reference alone does not activate access.
-Never enter HBL login credentials, PIN or OTP in the website code.
-
-Verification performed: JavaScript syntax, HTML/JS target and anchor checks,
-unique IDs, fixed prices and safe dynamic text rendering. Visual browser QA and
-live Firebase/login/order/download tests remain pending. The website source
-alone does not prove a working live backend or a tested installer.
+Before opening sales, test real Google sign-in/device approval, Android Restore
+Purchases -> Windows activation, website order approval -> Android activation,
+family grant/revoke, a refunded purchase, wrong-user denial and the complete
+customer bundle on another Windows PC.

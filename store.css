@@ -38,3 +38,27 @@
 .store-panel summary { cursor: pointer; color: #b8c9de; font-weight: 600; }
 .store-panel :focus-visible { outline: 3px solid #f5c451; outline-offset: 4px; }
 @media (max-width: 760px) { .store-grid, .store-form { grid-template-columns: 1fr; } .bank-details div { grid-template-columns: 1fr; gap: 4px; } .account-bar { align-items: flex-start; } .store-wide { grid-column: auto; } .store-actions .button { flex: 1 1 auto; } }
+
+
+/* Store surfaces keep the existing site typography and readable text. */
+.store-panel {
+  position: relative;
+  background: linear-gradient(135deg, #26364bd9, #101b2bdb 38%, #0a121fe8);
+  border-color: #42617c;
+  box-shadow: 0 16px 38px #0005, 0 0 24px #42ccef0b, inset 0 1px 0 #ffffff1f;
+  backdrop-filter: blur(14px);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.store-panel:hover { border-color: #6787a5; box-shadow: 0 18px 40px #0006, 0 0 28px #42ccef16, inset 0 1px 0 #ffffff26; }
+.store-panel .button, .store-panel .copy-button {
+  border-radius: 13px;
+  font-weight: 700;
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+.store-panel .button-primary { background: linear-gradient(145deg, #fff0bf, #f5cc65 28%, #e5ac35); color: #201500; border: 1px solid #fff0bd; box-shadow: 0 5px 14px #0005, 0 0 20px #edb44720; }
+.store-panel .button-secondary { background: linear-gradient(145deg, #3c526aaf, #122237bd); border-color: #557896; box-shadow: inset 0 1px 0 #ffffff22; }
+.store-panel .button:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 7px 20px #0005, 0 0 25px #eac36a3b; }
+.store-panel .button:not(:disabled):active { transform: translateY(1px) scale(.985); }
+.order-card { background: linear-gradient(140deg, #21334aab, #091321d9); box-shadow: inset 0 1px 0 #ffffff14; }
+.pairing-panel { border-color: #ddba61; box-shadow: 0 0 30px #e5bd5024, inset 0 1px 0 #fff5cf33; }
+@media (prefers-reduced-motion: reduce) { .store-panel, .store-panel .button, .store-panel .copy-button { transition: none; } .store-panel .button:not(:disabled):hover, .store-panel .button:not(:disabled):active { transform: none; } }

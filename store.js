@@ -1,7 +1,7 @@
 import {firebaseConfig, functionsRegion} from './store-config.js';
 
 const $ = id => document.getElementById(id);
-const state = {sdk: null, auth: null, functions: null, user: null, account: null, configuration: null, busy: false, orderNonce: null};
+const state = {sdk: null, auth: null, functions: null, user: null, account: null, configuration: null, busy: false, orderNonce: null, authRevision: 0};
 const sessionId = new URL(location.href).searchParams.get('desktopSession');
 const pairingSession = /^[a-f0-9]{32}$/.test(sessionId || '') ? sessionId : null;
 const signInProvider = () => {
@@ -18,16 +18,25 @@ const errorText = error => {
   if (code.includes('popup-closed-by-user')) return 'Google sign-in was canceled. You can try again.';
   if (code.includes('popup-blocked')) return 'Allow the Google sign-in popup for this website, then try again.';
   if (code.includes('unauthorized-domain')) return 'Google sign-in for this website is awaiting owner configuration. Please contact Zeno Network.';
+  if (code.includes('functions/not-found')) return 'Windows sign-in and store services are being activated. Please retry later; do not transfer payment yet.';
   if (code.includes('network-request-failed') || code.includes('unavailable') || code.includes('internal')) return 'The secure account service is unavailable. Please retry later; do not transfer payment without an order.';
   return error?.message?.replace(/^Firebase: /, '').replace(/ \(.*\)\.?$/, '') || 'This request could not complete. Please try again.';
 };
-const call = async (name, data = {}) => (await state.sdk.httpsCallable(state.functions, name, {timeout: 30000})(data)).data;
+const call = async (name, data = {}) => {
+  const uid = state.user?.uid;
+  const response = await state.sdk.httpsCallable(state.functions, name, {timeout: 30000})(data);
+  if (name !== 'getStoreConfiguration' && state.user?.uid !== uid) {
+    throw new Error('Your Google account changed. Refresh before continuing.');
+  }
+  return response.data;
+};
 const element = (tag, content, className) => {
   const node = document.createElement(tag);
   if (content !== undefined) node.textContent = content;
   if (className) node.className = className;
   return node;
 };
+const priceText = amount => `PKR ${Number(amount ?? 9899).toLocaleString('en-PK')}`;
 const randomRequestId = () => [...crypto.getRandomValues(new Uint8Array(24))].map(byte => byte.toString(16).padStart(2, '0')).join('');
 const createButton = (label, callback, primary = false) => {
   const button = element('button', label, `button button-${primary ? 'primary' : 'secondary'}`);
@@ -39,6 +48,7 @@ function render() {
   const signedIn = Boolean(state.user && state.account);
   const ready = state.configuration?.ready === true;
   const premium = signedIn && state.account.windows?.premium === true;
+  $('new-purchase-price').textContent = priceText(state.configuration?.pricePkr);
   const owner = signedIn && state.account.isAdmin === true;
   $('google-sign-in').hidden = signedIn;
   $('google-sign-in').disabled = !state.auth || state.busy;
@@ -47,12 +57,12 @@ function render() {
   $('google-sign-out').disabled = state.busy;
   $('account-refresh').disabled = state.busy;
   $('account-name').textContent = signedIn ? state.user.displayName || state.user.email : 'Sign in with your Gmail account';
-  $('account-detail').textContent = signedIn ? `${state.user.email} · ${owner ? 'Owner / Admin' : premium ? 'Windows Premium active' : 'Windows Premium awaiting purchase'}` : 'Google sign-in is required for purchase, download and license activation.';
+  $('account-detail').textContent = signedIn ? `${state.user.email} · ${owner ? 'Owner / Admin' : premium ? 'Android + Windows Premium active' : 'Premium awaiting purchase or Android restore'}` : 'Use the same Gmail as your Android purchase. One verified purchase unlocks Android and Windows.';
   $('create-order').disabled = !signedIn || !ready || premium || state.busy;
   $('create-order').hidden = premium;
   $('approved-download').hidden = !premium;
   $('download-windows').disabled = state.busy;
-  $('checkout-availability').textContent = ready ? 'Create an order before transferring payment. Manual payment approval is required.' : 'Windows sales are currently closed. Please wait for the verified installer and store activation before sending payment.';
+  $('checkout-availability').textContent = ready ? 'Already bought Premium on Android? Refresh this same Gmail account before creating another order. New website purchases require verified bank approval.' : 'Website sales are currently closed. Existing Android buyers can sign in and refresh their Premium; do not transfer payment without an order.';
   $('my-orders-panel').hidden = !signedIn;
   $('owner-panel').hidden = !owner;
   $('delete-account-panel').hidden = !signedIn || owner;
@@ -111,13 +121,13 @@ function orderCard(order, admin = false) {
     const input = element('input'); input.required = true; input.minLength = 5; input.maxLength = 100; label.append(input); form.append(label);
     const checkLabel = element('label', undefined, 'store-check');
     const check = element('input'); check.type = 'checkbox'; check.required = true;
-    checkLabel.append(check, document.createTextNode('I checked my HBL account and confirmed this exact PKR 9,999 credit.')); form.append(checkLabel);
+    checkLabel.append(check, document.createTextNode(`I checked my HBL account and confirmed this exact ${priceText(order.pricePkr)} credit.`)); form.append(checkLabel);
     const submit = element('button', 'Approve verified payment & activate license', 'button button-primary'); submit.type = 'submit'; form.append(submit);
     form.addEventListener('submit', event => {
       event.preventDefault(); const bankReference = input.value.trim(); const confirmed = check.checked;
       action(async () => {
-        await call('approveWindowsOrder', {orderId: order.id, bankReference, amountReceivedPkr: 9999, bankCreditConfirmed: confirmed});
-        await loadOrders(); message('Verified payment approved. The customer’s Windows lifetime license is active.', 'success');
+        await call('approveWindowsOrder', {orderId: order.id, bankReference, amountReceivedPkr: order.pricePkr, bankCreditConfirmed: confirmed});
+        await loadOrders(); message('Verified payment approved. The customer’s Android + Windows lifetime Premium is active.', 'success');
       });
     });
     card.append(form);
@@ -135,10 +145,13 @@ function orderCard(order, admin = false) {
 
 async function loadOrders() {
   if (!state.account) return;
+  const uid = state.user?.uid;
   const mine = await call('getMyWindowsOrders');
+  if (!uid || state.user?.uid !== uid || !state.account) return;
   $('my-orders').replaceChildren(...(mine.orders.length ? mine.orders.map(order => orderCard(order)) : [element('p', 'No orders yet. Create your Windows order above.')]));
   if (state.account.isAdmin) {
     const all = await call('listWindowsOrders');
+    if (state.user?.uid !== uid || !state.account?.isAdmin) return;
     $('owner-orders').replaceChildren(...(all.orders.length ? all.orders.map(order => orderCard(order, true)) : [element('p', 'No customer orders yet.')]));
   }
 }
@@ -150,8 +163,10 @@ async function loadAccount() {
   state.account = account;
   render();
   await loadOrders();
+  if (state.user?.uid !== uid || state.account !== account) return;
   if (state.account.isAdmin) {
     const settings = await call('getWindowsStoreAdmin');
+    if (state.user?.uid !== uid || !state.account?.isAdmin) return;
     const form = $('store-settings-form');
     for (const field of ['bankName', 'accountTitle', 'iban', 'accountNumber', 'raastId', 'downloadUrl']) form.elements[field].value = settings[field] || '';
     form.elements.enabled.checked = settings.enabled === true;
@@ -170,16 +185,24 @@ async function initialize() {
     const firebase = app.initializeApp(firebaseConfig);
     state.auth = auth.getAuth(firebase); state.functions = functions.getFunctions(firebase, functionsRegion);
     auth.onAuthStateChanged(state.auth, async user => {
+      const revision = ++state.authRevision;
       if (state.user?.uid !== user?.uid) state.orderNonce = null;
-      state.user = user; state.account = null; render();
+      state.user = user; state.account = null;
+      $('my-orders').replaceChildren(); $('owner-orders').replaceChildren();
+      render();
       if (!user) return;
       try {
         if (!user.emailVerified || !/^[^\s@]+@gmail\.com$/i.test(user.email || '') || !user.providerData.some(provider => provider.providerId === 'google.com')) {
           await auth.signOut(state.auth); throw new Error('Please choose a verified Google Gmail account.');
         }
-        await loadAccount(); message('Google account connected. Your purchases and access are up to date.', 'success');
+        await loadAccount();
+        if (revision !== state.authRevision) return;
+        message('Google account connected. Premium is shared with this same Gmail on Android and Windows.', 'success');
         if (pairingSession) $('pairing-status').textContent = 'Check the matching code before approving this computer.';
-      } catch (error) { state.account = null; render(); message(errorText(error), 'error'); }
+      } catch (error) {
+        if (revision !== state.authRevision) return;
+        state.account = null; render(); message(errorText(error), 'error');
+      }
     });
     render();
     await refreshStore();
@@ -202,12 +225,12 @@ $('create-order').addEventListener('click', () => action(async () => {
   state.orderNonce = null;
   state.configuration = result.receivingAccount; await loadOrders();
   $('my-orders-panel').scrollIntoView({behavior: 'smooth', block: 'start'});
-  message(`Order ${result.order.id.slice(0, 12).toUpperCase()} created. Transfer PKR 9,999 to the displayed HBL account, then submit your transaction reference.`, 'success');
+  message(`Order ${result.order.id.slice(0, 12).toUpperCase()} created. Transfer ${priceText(result.order.pricePkr)} to the displayed HBL account, then submit your transaction reference.`, 'success');
 }));
 $('download-windows').addEventListener('click', () => action(async () => {
   const result = await call('getWindowsDownload');
   const url = new URL(result.url);
-  if (url.protocol !== 'https:' || !['zenonetwork.xyz', 'www.zenonetwork.xyz', 'github.com', 'storage.googleapis.com', 'firebasestorage.googleapis.com'].includes(url.hostname)) throw new Error('The installer link is not valid. Please contact Zeno Network.');
+  if (url.protocol !== 'https:' || url.username || url.password || !['zenonetwork.xyz', 'www.zenonetwork.xyz', 'github.com', 'storage.googleapis.com', 'firebasestorage.googleapis.com'].includes(url.hostname)) throw new Error('The installer link is not valid. Please contact Zeno Network.');
   location.assign(url.href);
 }));
 $('copy-iban').addEventListener('click', () => action(async () => {
@@ -244,3 +267,4 @@ $('delete-account').addEventListener('click', () => action(async () => {
 }));
 
 void initialize();
+
