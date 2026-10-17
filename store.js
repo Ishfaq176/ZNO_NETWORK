@@ -1,7 +1,7 @@
 import {firebaseConfig, functionsRegion} from './store-config.js';
 
 const $ = id => document.getElementById(id);
-const state = {sdk: null, auth: null, functions: null, user: null, account: null, configuration: null, busy: false, orderNonce: null, authRevision: 0, pairingApproved: false};
+const state = {sdk: null, auth: null, functions: null, user: null, account: null, configuration: null, busy: false, orderNonce: null, authRevision: 0};
 const sessionId = new URL(location.href).searchParams.get('desktopSession');
 const pairingSession = /^[a-f0-9]{32}$/.test(sessionId || '') ? sessionId : null;
 const signInProvider = () => {
@@ -79,9 +79,6 @@ function render() {
   $('owner-panel').hidden = !owner;
   $('delete-account-panel').hidden = !signedIn || owner;
   $('desktop-pairing').hidden = !pairingSession;
-  $('pairing-code').textContent = pairingSession?.slice(-8).toUpperCase() || '';
-  $('pairing-approve').disabled = !state.auth || !$('pairing-confirm').checked || state.busy || state.pairingApproved;
-  $('pairing-approve').textContent = state.pairingApproved ? 'Windows computer approved' : state.user ? 'Connect this Windows app' : 'Connect Windows with Google';
   if (state.configuration) {
     for (const [id, field] of [['bank-name', 'bankName'], ['bank-title-value', 'accountTitle'], ['bank-iban', 'iban'], ['bank-account', 'accountNumber'], ['bank-raast', 'raastId']]) {
       $(id).textContent = state.configuration[field] || 'Not configured';
@@ -211,7 +208,6 @@ async function initialize() {
         await loadAccount();
         if (revision !== state.authRevision) return;
         message('Google account connected. Premium is shared with this same Gmail on Android and Windows.', 'success');
-        if (pairingSession && !state.pairingApproved) $('pairing-status').textContent = 'Your Google account is ready. Confirm the code, then connect this Windows app below.';
       } catch (error) {
         if (revision !== state.authRevision) return;
         state.account = null; render(); message(errorText(error), 'error');
@@ -254,27 +250,6 @@ $('download-windows-trial').addEventListener('click', () => action(async () => {
 }));
 $('copy-iban').addEventListener('click', () => action(async () => {
   await navigator.clipboard.writeText($('bank-iban').textContent); message('HBL IBAN copied.', 'success');
-}));
-$('pairing-confirm').addEventListener('change', render);
-$('pairing-approve').addEventListener('click', () => action(async () => {
-  if (!pairingSession) throw new Error('Start Google connection from your Windows app first.');
-  if (state.pairingApproved) return;
-  if (!$('pairing-confirm').checked) throw new Error('Check that the code matches your Windows app first.');
-  $('pairing-status').textContent = 'Confirming Google identity for this Windows computer…';
-  // A new sign-in is already fresh; an existing account reauthenticates once.
-  // No Windows access is approved before the matching-code confirmation.
-  const current = state.auth.currentUser || state.user;
-  const credential = current
-    ? await state.sdk.reauthenticateWithPopup(current, signInProvider())
-    : await state.sdk.signInWithPopup(state.auth, signInProvider());
-  const user = credential.user;
-  if ((state.auth.currentUser || state.user)?.uid !== user.uid) throw new Error('Your Google account changed. Start a new Windows connection.');
-  await user.getIdToken(true);
-  await call('approveDesktopSignIn', {sessionId: pairingSession});
-  state.pairingApproved = true;
-  $('pairing-status').textContent = 'Computer approved. Keep Zeno Convert Pro open; it will load your Google profile and Premium / Admin access automatically.';
-  $('pairing-confirm').checked = false;
-  message('Windows approval sent successfully. Return to Zeno Convert Pro.', 'success');
 }));
 $('store-settings-form').addEventListener('submit', event => {
   event.preventDefault(); const form = event.currentTarget; const data = Object.fromEntries(new FormData(form)); data.enabled = form.elements.enabled.checked;

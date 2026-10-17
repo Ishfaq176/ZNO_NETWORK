@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="origin">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Google sign-in · Zeno Convert Pro</title>
+  <script type="module" src="windows-sign-in.js?v=20261017-direct-google"></script>
+  <style>
+    :root{color-scheme:dark;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#f1f5ff;background:#08101c}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 12% 10%,#244147 0,transparent 55%),radial-gradient(ellipse at 85% 85%,#292338 0,transparent 55%),#08101c}
+    main{width:min(100%,480px);padding:42px 36px;border:1px solid #7c6942;border-radius:28px;background:linear-gradient(145deg,#1a2a3aee,#0c1727f5);box-shadow:0 22px 70px #0005}
+    .brand{font-size:12px;letter-spacing:.16em;font-weight:750;color:#e7c16a;margin:0 0 30px}h1{font-size:32px;line-height:1.2;letter-spacing:-.02em;margin:0 0 16px}p{color:#b9c8db;line-height:1.65;font-size:15px}
+    button{width:100%;margin:22px 0 12px;padding:16px;border:0;border-radius:13px;background:linear-gradient(120deg,#ffe1a0,#d2a94e);color:#172032;font:700 16px system-ui;cursor:pointer}
+    button:hover{filter:brightness(1.07)}button:focus-visible{outline:3px solid #77d7e7;outline-offset:4px}button:disabled{cursor:default;opacity:.55}
+    #sign-in-status{min-height:3.3em;font-size:14px;margin-bottom:0}#sign-in-status[data-kind=error]{color:#ffb9b9}.note{border-top:1px solid #8e795033;padding-top:18px;margin-top:24px;font-size:12px;color:#a1b0c2}
+    @media(max-width:400px){main{padding:30px 22px}h1{font-size:28px}}
+    @media(prefers-reduced-motion:no-preference){main{animation:appear .3s ease-out}@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
+  </style>
+</head>
+<body>
+  <main id="desktop-connect">
+    <p class="brand">ZENO NETWORK LABS · WINDOWS</p>
+    <h1>Connect Google.<br>Return to creating.</h1>
+    <p>Choose your Google Gmail account. We will return to Zeno Convert Pro with your profile and refresh your Premium access.</p>
+    <button id="google-connect" type="button" disabled>Continue with Google</button>
+    <p id="sign-in-status" role="status" aria-live="polite">Preparing Google sign-in…</p>
+    <p class="note">Keep Zeno Convert Pro open while signing in. Use the same Gmail as your Android purchase or existing Premium account.</p>
+    <noscript><p>Enable JavaScript, then start Continue with Google again in the Windows app.</p></noscript>
+  </main>
+</body>
+</html>
