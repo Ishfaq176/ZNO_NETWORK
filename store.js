@@ -1,7 +1,7 @@
 import {firebaseConfig, functionsRegion} from './store-config.js';
 
 const $ = id => document.getElementById(id);
-const state = {sdk: null, auth: null, functions: null, user: null, account: null, configuration: null, busy: false, orderNonce: null, authRevision: 0};
+const state = {sdk: null, auth: null, functions: null, user: null, account: null, configuration: null, busy: false, orderNonce: null, authRevision: 0, pairingApproved: false};
 const sessionId = new URL(location.href).searchParams.get('desktopSession');
 const pairingSession = /^[a-f0-9]{32}$/.test(sessionId || '') ? sessionId : null;
 const signInProvider = () => {
@@ -23,9 +23,9 @@ const errorText = error => {
   return error?.message?.replace(/^Firebase: /, '').replace(/ \(.*\)\.?$/, '') || 'This request could not complete. Please try again.';
 };
 const call = async (name, data = {}) => {
-  const uid = state.user?.uid;
+  const uid = state.auth?.currentUser?.uid ?? state.user?.uid;
   const response = await state.sdk.httpsCallable(state.functions, name, {timeout: 30000})(data);
-  if (name !== 'getStoreConfiguration' && state.user?.uid !== uid) {
+  if (name !== 'getStoreConfiguration' && (state.auth?.currentUser?.uid ?? state.user?.uid) !== uid) {
     throw new Error('Your Google account changed. Refresh before continuing.');
   }
   return response.data;
@@ -62,7 +62,7 @@ function render() {
     : 'The verified Windows trial download is being prepared. Please check back soon.';
   $('new-purchase-price').textContent = priceText(state.configuration?.pricePkr);
   const owner = signedIn && state.account.isAdmin === true;
-  $('google-sign-in').hidden = signedIn;
+  $('google-sign-in').hidden = signedIn || Boolean(pairingSession);
   $('google-sign-in').disabled = !state.auth || state.busy;
   $('google-sign-out').hidden = !state.user;
   $('account-refresh').hidden = !state.user;
@@ -80,7 +80,8 @@ function render() {
   $('delete-account-panel').hidden = !signedIn || owner;
   $('desktop-pairing').hidden = !pairingSession;
   $('pairing-code').textContent = pairingSession?.slice(-8).toUpperCase() || '';
-  $('pairing-approve').disabled = !signedIn || !$('pairing-confirm').checked || state.busy;
+  $('pairing-approve').disabled = !state.auth || !$('pairing-confirm').checked || state.busy || state.pairingApproved;
+  $('pairing-approve').textContent = state.pairingApproved ? 'Windows computer approved' : state.user ? 'Connect this Windows app' : 'Connect Windows with Google';
   if (state.configuration) {
     for (const [id, field] of [['bank-name', 'bankName'], ['bank-title-value', 'accountTitle'], ['bank-iban', 'iban'], ['bank-account', 'accountNumber'], ['bank-raast', 'raastId']]) {
       $(id).textContent = state.configuration[field] || 'Not configured';
@@ -210,13 +211,14 @@ async function initialize() {
         await loadAccount();
         if (revision !== state.authRevision) return;
         message('Google account connected. Premium is shared with this same Gmail on Android and Windows.', 'success');
-        if (pairingSession) $('pairing-status').textContent = 'Check the matching code before approving this computer.';
+        if (pairingSession && !state.pairingApproved) $('pairing-status').textContent = 'Your Google account is ready. Confirm the code, then connect this Windows app below.';
       } catch (error) {
         if (revision !== state.authRevision) return;
         state.account = null; render(); message(errorText(error), 'error');
       }
     });
     render();
+    if (pairingSession) $('desktop-pairing').scrollIntoView({behavior: 'auto', block: 'center'});
     await refreshStore();
     if (!state.user) message(state.configuration.ready ? 'Sign in with Google to create a Windows purchase order.' : 'Windows sales are currently closed. Google sign-in and account management remain available.');
   } catch (error) { render(); message(errorText(error), 'error'); }
@@ -255,13 +257,24 @@ $('copy-iban').addEventListener('click', () => action(async () => {
 }));
 $('pairing-confirm').addEventListener('change', render);
 $('pairing-approve').addEventListener('click', () => action(async () => {
+  if (!pairingSession) throw new Error('Start Google connection from your Windows app first.');
+  if (state.pairingApproved) return;
   if (!$('pairing-confirm').checked) throw new Error('Check that the code matches your Windows app first.');
-  await state.sdk.reauthenticateWithPopup(state.user, signInProvider());
-  await state.user.getIdToken(true);
+  $('pairing-status').textContent = 'Confirming Google identity for this Windows computer…';
+  // A new sign-in is already fresh; an existing account reauthenticates once.
+  // No Windows access is approved before the matching-code confirmation.
+  const current = state.auth.currentUser || state.user;
+  const credential = current
+    ? await state.sdk.reauthenticateWithPopup(current, signInProvider())
+    : await state.sdk.signInWithPopup(state.auth, signInProvider());
+  const user = credential.user;
+  if ((state.auth.currentUser || state.user)?.uid !== user.uid) throw new Error('Your Google account changed. Start a new Windows connection.');
+  await user.getIdToken(true);
   await call('approveDesktopSignIn', {sessionId: pairingSession});
-  $('pairing-status').textContent = 'Computer approved. Return to Zeno Convert Pro; sign-in will finish automatically.';
+  state.pairingApproved = true;
+  $('pairing-status').textContent = 'Computer approved. Keep Zeno Convert Pro open; it will load your Google profile and Premium / Admin access automatically.';
   $('pairing-confirm').checked = false;
-  message('Your computer has been approved. Return to the Windows app.', 'success');
+  message('Windows approval sent successfully. Return to Zeno Convert Pro.', 'success');
 }));
 $('store-settings-form').addEventListener('submit', event => {
   event.preventDefault(); const form = event.currentTarget; const data = Object.fromEntries(new FormData(form)); data.enabled = form.elements.enabled.checked;
@@ -284,4 +297,3 @@ $('delete-account').addEventListener('click', () => action(async () => {
 }));
 
 void initialize();
-

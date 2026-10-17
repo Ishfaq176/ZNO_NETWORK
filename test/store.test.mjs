@@ -17,7 +17,7 @@ class Element {
   addEventListener(name, callback) { this.events[name] = callback; }
   scrollIntoView() {}
 }
-function fixture() {
+function fixture({sessionId} = {}) {
   const html = readFileSync(new URL('../zeno-convert-pro.html', import.meta.url), 'utf8');
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
   const nodes = new Map(ids.map(id => [id, new Element()]));
@@ -30,7 +30,7 @@ function fixture() {
     querySelectorAll: () => [],
   };
   const downloads = [];
-  const context = vm.createContext({document, URL, location: {href: 'https://zenonetwork.xyz/zeno-convert-pro.html', assign: url => downloads.push(url)}, console, crypto: globalThis.crypto});
+  const context = vm.createContext({document, URL, location: {href: 'https://zenonetwork.xyz/zeno-convert-pro.html' + (sessionId ? '?desktopSession=' + sessionId : ''), assign: url => downloads.push(url)}, console, crypto: globalThis.crypto});
   let source = readFileSync(new URL('../store.js', import.meta.url), 'utf8');
   assert.ok(source.includes("import {firebaseConfig, functionsRegion} from './store-config.js';"));
   source = source.replace(/^import[^\n]+\n/, 'const firebaseConfig = {}; const functionsRegion = "test";\n')
@@ -118,4 +118,70 @@ test('owner approval confirms the stored order amount, including legacy 9,999 or
     assert.equal(approval.data.amountReceivedPkr, pricePkr);
     assert.equal(approval.data.bankCreditConfirmed, true);
   }
+});
+
+
+test('Windows pairing requires a matching-code confirmation even for the owner', async () => {
+  const f = fixture({sessionId: 'a'.repeat(32)});
+  f.state.account = {windows: {premium: true}, isAdmin: true};
+  f.render();
+  assert.equal(f.nodes.get('desktop-pairing').hidden, false);
+  assert.equal(f.nodes.get('pairing-approve').disabled, true);
+  await f.nodes.get('pairing-approve').events.click();
+  assert.equal(f.calls.length, 0);
+  assert.match(f.nodes.get('store-message').textContent, /code matches/i);
+});
+
+test('a fresh Google connection approves the matching Windows session once', async () => {
+  const f = fixture({sessionId: 'b'.repeat(32)});
+  f.state.user = null; f.state.account = null;
+  const user = {uid: 'google-owner', getIdToken: async () => 'private-token'};
+  let popups = 0;
+  f.state.sdk.GoogleAuthProvider = class {setCustomParameters() {}};
+  f.state.sdk.signInWithPopup = async () => { popups++; f.state.auth.currentUser = user; return {user}; };
+  f.state.sdk.reauthenticateWithPopup = async () => { throw new Error('Do not request a second popup after fresh sign-in'); };
+  f.nodes.get('pairing-confirm').checked = true;
+  f.render();
+  assert.equal(f.nodes.get('google-sign-in').hidden, true);
+  assert.equal(f.nodes.get('pairing-approve').disabled, false);
+  await f.nodes.get('pairing-approve').events.click();
+  assert.equal(popups, 1);
+  assert.deepEqual(f.calls.map(call => call.name), ['approveDesktopSignIn']);
+  assert.equal(f.calls[0].data.sessionId, 'b'.repeat(32));
+  assert.equal(f.state.pairingApproved, true);
+  assert.equal(f.nodes.get('pairing-approve').disabled, true);
+  assert.match(f.nodes.get('pairing-status').textContent, /Computer approved/);
+  await f.nodes.get('pairing-approve').events.click();
+  assert.equal(f.calls.length, 1);
+});
+
+test('an existing owner reauthenticates once and approval survives auth-state refresh', async () => {
+  const f = fixture({sessionId: 'c'.repeat(32)});
+  const user = {...f.state.user, getIdToken: async () => 'private-token'};
+  f.state.auth.currentUser = user;
+  f.state.sdk.GoogleAuthProvider = class {setCustomParameters() {}};
+  let reauth = 0;
+  f.state.sdk.reauthenticateWithPopup = async () => {
+    reauth++;
+    // Firebase auth observers can refresh the displayed account during reauth.
+    f.state.user = null;
+    return {user};
+  };
+  f.nodes.get('pairing-confirm').checked = true;
+  await f.nodes.get('pairing-approve').events.click();
+  assert.equal(reauth, 1);
+  assert.equal(f.state.pairingApproved, true);
+  assert.match(f.nodes.get('store-message').textContent, /sent successfully/i);
+  assert.equal(f.calls[0].data.sessionId, 'c'.repeat(32));
+});
+
+test('failed or canceled Google approval never claims that Windows is connected', async () => {
+  const f = fixture({sessionId: 'd'.repeat(32)});
+  f.state.sdk.GoogleAuthProvider = class {setCustomParameters() {}};
+  f.state.sdk.reauthenticateWithPopup = async () => { throw {code: 'auth/popup-closed-by-user'}; };
+  f.nodes.get('pairing-confirm').checked = true;
+  await f.nodes.get('pairing-approve').events.click();
+  assert.equal(f.state.pairingApproved, false);
+  assert.equal(f.calls.length, 0);
+  assert.match(f.nodes.get('store-message').textContent, /canceled/i);
 });

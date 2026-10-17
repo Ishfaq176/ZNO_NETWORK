@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="styles.css?v=20260921-fullscreen">
   <script src="site.js?v=20260921-gold" defer></script>
   <link rel="stylesheet" href="store.css?v=20261015">
-  <script type="module" src="store.js?v=20261015"></script>
+  <script type="module" src="store.js?v=20261017-desktop-connect"></script>
   <style>
     .convert-pricing{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:30px}
     .convert-price{font:700 clamp(1.8rem,4vw,3rem)/1 "Sora",sans-serif;color:#f5c451;margin:12px 0}
@@ -126,17 +126,17 @@
         </div>
         <noscript><p class="store-notice">Enable JavaScript to sign in and manage a purchase. Please do not transfer payment until an order has been created.</p></noscript>
         <div id="store-message" class="store-notice" role="status" aria-live="polite">Connecting to the secure store. Please do not transfer payment until your order is created.</div>
+        <div id="desktop-pairing" class="store-panel pairing-panel" hidden>
+          <p class="overline">CONNECT YOUR WINDOWS APP</p><h3>Connect your Windows profile and Premium</h3>
+          <p>Keep the Windows app open. Confirm its matching code below, then use the Google connection button. Signing in to the website alone does not approve a computer.</p>
+          <strong id="pairing-code" class="pairing-code"></strong>
+          <label class="store-check"><input id="pairing-confirm" type="checkbox"> This code matches my Windows app.</label>
+          <button id="pairing-approve" class="button button-primary" type="button" disabled>Connect Windows with Google</button>
+          <p id="pairing-status" class="convert-note" role="status" aria-live="polite">Sign in with Google to continue.</p>
+        </div>
         <div class="store-panel account-bar">
           <div><strong id="account-name">Sign in with your Gmail account</strong><p id="account-detail" class="convert-note">Google sign-in is required for purchase, download and license activation.</p></div>
           <div class="store-actions"><button id="google-sign-in" class="button button-primary" type="button" disabled>Continue with Google</button><button id="account-refresh" class="button button-secondary" type="button" hidden>Refresh</button><button id="google-sign-out" class="button button-secondary" type="button" hidden>Sign out</button></div>
-        </div>
-        <div id="desktop-pairing" class="store-panel pairing-panel" hidden>
-          <p class="overline">CONNECT YOUR WINDOWS APP</p><h3>Check the code on your computer</h3>
-          <p>Approve only if you just started sign-in in Zeno Convert Pro and the app shows this same code.</p>
-          <strong id="pairing-code" class="pairing-code"></strong>
-          <label class="store-check"><input id="pairing-confirm" type="checkbox"> This code matches my Windows app.</label>
-          <button id="pairing-approve" class="button button-primary" type="button" disabled>Approve this computer</button>
-          <p id="pairing-status" class="convert-note" role="status" aria-live="polite">Sign in with Google to continue.</p>
         </div>
         <div class="store-grid">
           <article class="store-panel" aria-labelledby="checkout-title">
@@ -202,4 +202,3 @@
   </footer>
 </body>
 </html>
-
